@@ -3,7 +3,7 @@
 # cca
 
 ## 설명
-ccs(TI Code Composer Studio) Compiler를 위한 Code 커버리지 분석기
+* ccs(TI Code Composer Studio) Compiler를 위한 Code Coverage 분석기
 
 1. 컴파일러를 통해서 코드 수행 csv파일을 아래와 같이 얻는 경우
 ~~~c++
@@ -49,9 +49,9 @@ count : 1
 # ut
 
 ## 설명
-unit test
-마이크로 프로세서를 위한 유닛 테스트 라이브러리
-윈도우/리눅스 OS 사용 가능
+* unittest library
+* 마이크로 프로세서를 위한 유닛 테스트 라이브러리
+* 윈도우/리눅스 OS 사용 가능
 
 
 
