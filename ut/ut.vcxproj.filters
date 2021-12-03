@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ut">
+      <UniqueIdentifier>{381fcf0c-16ee-4167-a066-81fa4a1cd2ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="win">
+      <UniqueIdentifier>{b723f12c-ea1c-4953-a773-9b0684acfde1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="win\리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="win\소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="win\헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ut_example.cpp">
+      <Filter>win\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ut\ut_testrunner.c">
+      <Filter>ut</Filter>
+    </ClCompile>
+    <ClCompile Include="ut\ut_print.c">
+      <Filter>ut</Filter>
+    </ClCompile>
+    <ClCompile Include="ut\ut_runtime_windows.c">
+      <Filter>ut</Filter>
+    </ClCompile>
+    <ClCompile Include="ut\ut_time.c">
+      <Filter>ut</Filter>
+    </ClCompile>
+    <ClCompile Include="ut\ut_test.c">
+      <Filter>ut</Filter>
+    </ClCompile>
+    <ClCompile Include="ut_testsut_my_app.c">
+      <Filter>win\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ut\ut_testinvoke.c">
+      <Filter>ut</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ut\ut_print.h">
+      <Filter>ut</Filter>
+    </ClInclude>
+    <ClInclude Include="ut\ut_test_macro.h">
+      <Filter>ut</Filter>
+    </ClInclude>
+    <ClInclude Include="ut\ut_testrunner.h">
+      <Filter>ut</Filter>
+    </ClInclude>
+    <ClInclude Include="ut\ut_test_struct.h">
+      <Filter>ut</Filter>
+    </ClInclude>
+    <ClInclude Include="ut\ut_type.h">
+      <Filter>ut</Filter>
+    </ClInclude>
+    <ClInclude Include="ut\ut.h">
+      <Filter>ut</Filter>
+    </ClInclude>
+    <ClInclude Include="ut\ut_define.h">
+      <Filter>ut</Filter>
+    </ClInclude>
+    <ClInclude Include="ut\ut_runtime.h">
+      <Filter>ut</Filter>
+    </ClInclude>
+    <ClInclude Include="ut\ut_time.h">
+      <Filter>ut</Filter>
+    </ClInclude>
+    <ClInclude Include="ut\ut_test.h">
+      <Filter>ut</Filter>
+    </ClInclude>
+    <ClInclude Include="ut_testsut_my_app.h">
+      <Filter>win\소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="my_app_main.h">
+      <Filter>win\소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="my_app_module.h">
+      <Filter>win\소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ut\ut_testinvoke.h">
+      <Filter>ut</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
