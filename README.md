@@ -3,7 +3,8 @@
 # cca
 
 ## 설명
-* ccs(TI Code Composer Studio) Compiler를 위한 Code Coverage 분석기
+* CodeCoverage Analysis Tool
+* ccs(TI Code Composer Studio) Compiler를 위한 CodeCoverage 분석기
 
 1. 컴파일러를 통해서 코드 수행 csv파일을 아래와 같이 얻는 경우
 ~~~c++
@@ -49,9 +50,8 @@ count : 1
 # ut
 
 ## 설명
-* unittest library
-* 마이크로 프로세서를 위한 유닛 테스트 라이브러리
-* 윈도우/리눅스 OS 사용 가능
+* C Launage UnitTest Library
+* 마이크로 프로세서(MCU)에서 사용하기 위해서 개발 된 유닛 테스트 라이브러리
 
 
 
