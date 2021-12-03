@@ -68,8 +68,12 @@ void ut_testinvoke_initialize(void)
 
 void ut_testinvoke(ut_testsuite_case_t* test, ut_testcontext_t* context)
 {
+	ut_testcase_function_t run;
+
 	int jmp_rval;
 
+
+	run = test->test->run;
 
 	jmp_rval = setjmp(_ut_jump_env);
 	if (0 == jmp_rval)
@@ -78,7 +82,7 @@ void ut_testinvoke(ut_testsuite_case_t* test, ut_testcontext_t* context)
 		__try
 		{
 #endif
-			test->test->run(context);
+			run(context);
 #ifdef _MSC_VER
 		}
 		__except(EXCEPTION_EXECUTE_HANDLER)

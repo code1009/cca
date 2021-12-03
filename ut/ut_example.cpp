@@ -25,7 +25,8 @@ ut_testcase_fixture
 (
 	case1,
 	"case1-description",
-	ut_testfixture_setup_instance(case1), ut_testfixture_teardown_instance(case1)
+	ut_testfixture_setup_instance(case1), 
+	ut_testfixture_teardown_instance(case1)
 )
 {
 	ut_println("case1");
@@ -83,7 +84,8 @@ ut_testsuite_fixture
 (
 	suite1, 
 	"suite1-description", 
-	ut_testfixture_setup_instance(suite1), ut_testfixture_teardown_instance(suite1)
+	ut_testfixture_setup_instance(suite1), 
+	ut_testfixture_teardown_instance(suite1)
 )
 
 /***************************************************************************/
