@@ -50,7 +50,7 @@ count : 1
 # ut
 
 ## 설명
-* C Launage UnitTest Library
+* UnitTest Library (C)
 * 마이크로 프로세서(MCU)에서 사용하기 위해서 개발 된 유닛 테스트 라이브러리
 
 
