@@ -81,7 +81,7 @@ ut_testcase(my_app_case2, ut_nullptr)
 {
 	ut_testassert(1 == my_div(1, 1));
 
-	ut_testassert(1 == my_div(1, 0)); // div 
+	ut_testassert(1 == my_div(1, 0)); // Division by zero
 }
 
 
