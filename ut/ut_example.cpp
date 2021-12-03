@@ -100,11 +100,8 @@ ut_testsuite_case_end()
 ut_testsuite(suite2, ut_nullptr)
 
 
-
-
-/***************************************************************************/
-int main()
-{	
+void ut_testsut_2(void)
+{
 	ut_testinvoke_initialize();
 
 	int a = 3;
@@ -113,6 +110,65 @@ int main()
 	ut_testrunner(ut_testsuite_instance(suite2), ut_nullptr);
 
 	ut_testrunner(ut_testsuite_instance(my_app_suite1), ut_nullptr);
+}
+
+
+
+
+
+/***************************************************************************/
+#include "ut/ut.h"
+
+
+
+/***************************************************************************/
+/* 테스트케이스 */
+ut_testcase(simple_case1, "단순 테스트케이스1")
+{
+	ut_testassert(1 == 0);
+	ut_testassert(1 == 1);
+}
+
+ut_testcase(simple_case2, "단순 테스트케이스2")
+{
+	void* param = ut_testcontext_get_param();
+	int* value = (int*)param;
+
+	ut_printfln("파라메터: %d", *value);
+
+	ut_testassert(3 == 3);
+	ut_testassert(3 == 3);
+}
+
+
+
+/***************************************************************************/
+/* 테스트슈트 */
+ut_testsuite_case_begin(simple_suite1)
+ut_testsuite_case(simple_case1)
+ut_testsuite_case(simple_case2)
+ut_testsuite_case_end()
+
+ut_testsuite(simple_suite1, "단순 테스트슈트")
+
+
+
+/***************************************************************************/
+void ut_testsut_1(void)
+{
+	int param = 3;
+
+
+	ut_testinvoke_initialize();
+
+	ut_testrunner(ut_testsuite_instance(simple_suite1), &param);
+}
+
+int main()
+{
+	ut_testsut_1();
+	ut_testsut_2();
+
 
 	return 0;
 }

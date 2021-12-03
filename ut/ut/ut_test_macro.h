@@ -167,6 +167,9 @@ UT_API ut_testsuite_t _ut_testsuite__##a_id;
 #define ut_testcontext_get(a_context) \
 	((ut_testcontext_t*)(a_context))
 
+/*=========================================================================*/
+#define ut_testcontext_get_param() \
+	(((ut_testcontext_t*)(__context__))->param)
 
 
 
