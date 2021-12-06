@@ -105,7 +105,7 @@ ut_testcontext_t;
 
 
 /***************************************************************************/
-/* 테스트러너리포트 */
+/* 테스트러너-리포트 */
 /***************************************************************************/
 typedef struct _ut_testrunner_report_t
 {
@@ -120,7 +120,6 @@ typedef struct _ut_testrunner_report_t
 	ut_uint_t     suite_total_case_count;
 	ut_uint_t     suite_total_number;
 	ut_uint_t     suite_total_count;
-	ut_float_t    suite_total_percent;
 }
 ut_testrunner_report_t;
 
