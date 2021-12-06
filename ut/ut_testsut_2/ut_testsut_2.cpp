@@ -110,17 +110,17 @@ UT_API void ut_testsut_2(void)
 
 	int a = 1;
 
-	ut_testrunner_report_t r;
+	ut_testreport_t r;
 
 
-	ut_testrunner_report_reset(&r);
+	ut_testreport_reset(&r);
 
 	ut_testrunner(ut_testsuite_instance(suite1), ut_nullptr, &r);
 	ut_testrunner(ut_testsuite_instance(suite2), &a, &r);
 
 	ut_testrunner(ut_testsuite_instance(simple_suite1), &a, &r);
 
-	ut_testrunner_report_print(&r);
+	ut_testreport_print(&r);
 }
 
 

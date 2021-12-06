@@ -105,23 +105,21 @@ ut_testcontext_t;
 
 
 /***************************************************************************/
-/* 테스트러너-리포트 */
+/* 테스트리포트 */
 /***************************************************************************/
-typedef struct _ut_testrunner_report_t
+typedef struct _ut_testreport_t
 {
+	ut_uint_t     assertion_success;
+	ut_uint_t     assertion_fail;
+	ut_uint_t     assertion_exception;
+	ut_uint_t     case_success;
+	ut_uint_t     case_fail;
+	ut_uint_t     case_exception;
+	ut_uint_t     case_count;
 	ut_uint_t     suite_count;
-	ut_timespec_t suite_total_runtime;
-	ut_uint_t     suite_total_assertion_success;
-	ut_uint_t     suite_total_assertion_fail;
-	ut_uint_t     suite_total_assertion_exception;
-	ut_uint_t     suite_total_case_success;
-	ut_uint_t     suite_total_case_fail;
-	ut_uint_t     suite_total_case_exception;
-	ut_uint_t     suite_total_case_count;
-	ut_uint_t     suite_total_number;
-	ut_uint_t     suite_total_count;
+	ut_timespec_t runtime;
 }
-ut_testrunner_report_t;
+ut_testreport_t;
 
 
 

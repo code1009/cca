@@ -126,7 +126,7 @@ void ut_testrunner_assert_condition(
 }
 
 /*=========================================================================*/
-void ut_testrunner_print_report(ut_testsuite_t* suite, ut_testrunner_report_t* report)
+void ut_testrunner_print_report(ut_testsuite_t* suite, ut_testreport_t* report)
 {
 #if 0
 	//-----------------------------------------------------------------------
@@ -378,19 +378,18 @@ void ut_testrunner_print_report(ut_testsuite_t* suite, ut_testrunner_report_t* r
 	//-----------------------------------------------------------------------
 	if (ut_nullptr!=report)
 	{
+		report->assertion_success   += total_assertion_success  ;
+		report->assertion_fail      += total_assertion_fail     ;
+		report->assertion_exception += total_assertion_exception;
+
+		report->case_success        += total_case_success       ;
+		report->case_fail           += total_case_fail          ;
+		report->case_exception      += total_case_exception     ;
+		report->case_count          += total_case_count         ;
+
 		report->suite_count++;
 
-		report->suite_total_assertion_success   += total_assertion_success  ;
-		report->suite_total_assertion_fail      += total_assertion_fail     ;
-		report->suite_total_assertion_exception += total_assertion_exception;
-		report->suite_total_case_success        += total_case_success       ;
-		report->suite_total_case_fail           += total_case_fail          ;
-		report->suite_total_case_exception      += total_case_exception     ;
-		report->suite_total_case_count          += total_case_count         ;
-		report->suite_total_number              += total_number             ;
-		report->suite_total_count               += total_count              ;
-
-		ut_time_add(&report->suite_total_runtime, &total_runtime, &report->suite_total_runtime);
+		ut_time_add(&report->runtime, &total_runtime, &report->runtime);
 	}
 }
 
@@ -557,7 +556,7 @@ void ut_testrunner_suite_case_collection(ut_testsuite_t* suite, void* param)
 }
 
 /*=========================================================================*/
-void ut_testrunner (ut_testsuite_t* suite, void* param, ut_testrunner_report_t* report)
+void ut_testrunner (ut_testsuite_t* suite, void* param, ut_testreport_t* report)
 {
 	//-----------------------------------------------------------------------
 	ut_testcontext_t context;
@@ -596,33 +595,44 @@ void ut_testrunner (ut_testsuite_t* suite, void* param, ut_testrunner_report_t* 
 	ut_testrunner_print_report(suite, report);
 }
 
-/*=========================================================================*/
-void ut_testrunner_report_reset(ut_testrunner_report_t* r)
+
+
+
+
+/***************************************************************************/
+/* 테스트리포트 */
+/***************************************************************************/
+void ut_testreport_reset(ut_testreport_t* r)
 {
+	r->assertion_success   = 0u;
+	r->assertion_fail      = 0u;
+	r->assertion_exception = 0u;
+
+	r->case_success        = 0u;
+	r->case_fail           = 0u;
+	r->case_exception      = 0u;
+	r->case_count          = 0u;
+
 	r->suite_count = 0u;
 
-	r->suite_total_runtime.second      = 0u;
-	r->suite_total_runtime.nanosecond  = 0u;
-	r->suite_total_assertion_success   = 0u;
-	r->suite_total_assertion_fail      = 0u;
-	r->suite_total_assertion_exception = 0u;
-	r->suite_total_case_success        = 0u;
-	r->suite_total_case_fail           = 0u;
-	r->suite_total_case_exception      = 0u;
-	r->suite_total_case_count          = 0u;
-	r->suite_total_number              = 0u;
-	r->suite_total_count               = 0u;
+	r->runtime.second = 0u;
+	r->runtime.nanosecond = 0u;
 }
 
-void ut_testrunner_report_print (ut_testrunner_report_t* r)
+void ut_testreport_print (ut_testreport_t* r)
 {
 	//-----------------------------------------------------------------------
+	ut_uint_t  total_number;
+	ut_uint_t  total_count;
 	ut_float_t total_percent;
 
 
-	if (r->suite_total_count > 0u)
+	//-----------------------------------------------------------------------
+	total_number = r->assertion_success;
+	total_count = r->assertion_success + r->assertion_fail + r->assertion_exception;
+	if (total_count > 0u)
 	{
-		total_percent = r->suite_total_number * 100.0f / r->suite_total_count;
+		total_percent = total_number * 100.0f / total_count;
 	}
 	else
 	{
@@ -642,29 +652,29 @@ void ut_testrunner_report_print (ut_testrunner_report_t* r)
 
 	//-----------------------------------------------------------------------
 	ut_printfln("TOTAL TESTSUITE COUNT    : %u", r->suite_count);
-	ut_printfln("TOTAL TESTSUITE RUNTIME  : %u.%09u", r->suite_total_runtime.second, r->suite_total_runtime.nanosecond);
+	ut_printfln("TOTAL TESTSUITE RUNTIME  : %u.%09u", r->runtime.second, r->runtime.nanosecond);
 	ut_printfln("TOTAL TESTSUITE SUCCESS  : %.2f %% (%u/%u)",
 		total_percent,
-		r->suite_total_number,
-		r->suite_total_count
+		total_number,
+		total_count
 	);
 
 	ut_print_endline();
 
 
 	//-----------------------------------------------------------------------
-	ut_printfln("TOTAL TESTCASE COUNT     : %u", r->suite_total_case_count);
-	ut_printfln("TOTAL TESTCASE SUCCESS   : %u", r->suite_total_case_success);
-	ut_printfln("TOTAL TESTCASE FAIL      : %u", r->suite_total_case_fail);
-	ut_printfln("TOTAL TESTCASE HALT      : %u", r->suite_total_case_exception);
+	ut_printfln("TOTAL TESTCASE COUNT     : %u", r->case_count);
+	ut_printfln("TOTAL TESTCASE SUCCESS   : %u", r->case_success);
+	ut_printfln("TOTAL TESTCASE FAIL      : %u", r->case_fail);
+	ut_printfln("TOTAL TESTCASE HALT      : %u", r->case_exception);
 
 	ut_print_endline();
 
 
 	//-----------------------------------------------------------------------
-	ut_printfln("TOTAL TESTASSERT SUCCESS : %u", r->suite_total_assertion_success);
-	ut_printfln("TOTAL TESTASSERT FAIL    : %u", r->suite_total_assertion_fail);
-	ut_printfln("TOTAL TESTASSERT HALT    : %u", r->suite_total_assertion_exception);
+	ut_printfln("TOTAL TESTASSERT SUCCESS : %u", r->assertion_success);
+	ut_printfln("TOTAL TESTASSERT FAIL    : %u", r->assertion_fail);
+	ut_printfln("TOTAL TESTASSERT HALT    : %u", r->assertion_exception);
 
 	ut_print_endline();
 
