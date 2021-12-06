@@ -378,17 +378,19 @@ void ut_testrunner_print_report(ut_testsuite_t* suite, ut_testrunner_report_t* r
 	//-----------------------------------------------------------------------
 	if (ut_nullptr!=report)
 	{
-		report->suite_total_runtime.second      = total_runtime.second     ;
-		report->suite_total_runtime.nanosecond  = total_runtime.nanosecond ;
-		report->suite_total_assertion_success   = total_assertion_success  ;
-		report->suite_total_assertion_fail      = total_assertion_fail     ;
-		report->suite_total_assertion_exception = total_assertion_exception;
-		report->suite_total_case_success        = total_case_success       ;
-		report->suite_total_case_fail           = total_case_fail          ;
-		report->suite_total_case_exception      = total_case_exception     ;
-		report->suite_total_case_count          = total_case_count         ;
-		report->suite_total_number              = total_number             ;
-		report->suite_total_count               = total_count              ;
+		report->suite_count++;
+
+		report->suite_total_assertion_success   += total_assertion_success  ;
+		report->suite_total_assertion_fail      += total_assertion_fail     ;
+		report->suite_total_assertion_exception += total_assertion_exception;
+		report->suite_total_case_success        += total_case_success       ;
+		report->suite_total_case_fail           += total_case_fail          ;
+		report->suite_total_case_exception      += total_case_exception     ;
+		report->suite_total_case_count          += total_case_count         ;
+		report->suite_total_number              += total_number             ;
+		report->suite_total_count               += total_count              ;
+
+		ut_time_add(&report->suite_total_runtime, &total_runtime, &report->suite_total_runtime);
 	}
 }
 
@@ -591,15 +593,7 @@ void ut_testrunner (ut_testsuite_t* suite, void* param, ut_testrunner_report_t* 
 
 
 	//-----------------------------------------------------------------------
-	ut_testrunner_report_t r;
-
-
-	ut_testrunner_print_report(suite, &r);
-
-	if (ut_nullptr!=report)
-	{
-		ut_testrunner_report_accumulate(report, &r);
-	}
+	ut_testrunner_print_report(suite, report);
 }
 
 /*=========================================================================*/
@@ -618,24 +612,6 @@ void ut_testrunner_report_reset(ut_testrunner_report_t* r)
 	r->suite_total_case_count          = 0u;
 	r->suite_total_number              = 0u;
 	r->suite_total_count               = 0u;
-}
-
-void ut_testrunner_report_accumulate(ut_testrunner_report_t* a, ut_testrunner_report_t* r)
-{
-	a->suite_count++;
-
-	a->suite_total_assertion_success   += r->suite_total_assertion_success;
-	a->suite_total_assertion_fail      += r->suite_total_assertion_fail;
-	a->suite_total_assertion_exception += r->suite_total_assertion_exception;
-	a->suite_total_case_success        += r->suite_total_case_success;
-	a->suite_total_case_fail           += r->suite_total_case_fail;
-	a->suite_total_case_exception      += r->suite_total_case_exception;
-	a->suite_total_case_count          += r->suite_total_case_count;
-	a->suite_total_number              += r->suite_total_number;
-	a->suite_total_count               += r->suite_total_count;
-
-
-	ut_time_add(&a->suite_total_runtime, &r->suite_total_runtime, &a->suite_total_runtime);
 }
 
 void ut_testrunner_report_print (ut_testrunner_report_t* r)
