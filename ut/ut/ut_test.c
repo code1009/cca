@@ -624,8 +624,6 @@ void ut_testrunner_report_accumulate(ut_testrunner_report_t* a, ut_testrunner_re
 {
 	a->suite_count++;
 
-	a->suite_total_runtime.second      += r->suite_total_runtime.second;
-	a->suite_total_runtime.nanosecond  += r->suite_total_runtime.nanosecond;
 	a->suite_total_assertion_success   += r->suite_total_assertion_success;
 	a->suite_total_assertion_fail      += r->suite_total_assertion_fail;
 	a->suite_total_assertion_exception += r->suite_total_assertion_exception;
@@ -636,11 +634,8 @@ void ut_testrunner_report_accumulate(ut_testrunner_report_t* a, ut_testrunner_re
 	a->suite_total_number              += r->suite_total_number;
 	a->suite_total_count               += r->suite_total_count;
 
-	if (a->suite_total_runtime.nanosecond >= 1000000000U)
-	{
-		a->suite_total_runtime.second += (a->suite_total_runtime.nanosecond / 1000000000U);
-		a->suite_total_runtime.nanosecond = a->suite_total_runtime.nanosecond % 1000000000U;
-	}
+
+	ut_time_add(&a->suite_total_runtime, &r->suite_total_runtime, &a->suite_total_runtime);
 }
 
 void ut_testrunner_report_print (ut_testrunner_report_t* r)
