@@ -65,7 +65,6 @@ void ut_testinvoke_initialize(void)
 	_ut_previous_signal_handler_SIGABRT = signal(SIGABRT, ut_signal_handler);
 }
 
-
 void ut_testinvoke(ut_testsuite_case_t* test, ut_testcontext_t* context)
 {
 	ut_testcase_function_t run;

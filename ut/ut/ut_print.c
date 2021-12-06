@@ -19,14 +19,14 @@
 
 
 /***************************************************************************/
-#define UT_PRINT_BUFFER_SIZE 256
+#define UT_PRINT_FORMAT_BUFFER_SIZE 256
 
 #define UT_PRINT_ENDLINE "\n"
 #define UT_PRINT_ENDLINE_LENGTH 1
 
 
 /***************************************************************************/
-static ut_char_t _ut_print_buffer[UT_PRINT_BUFFER_SIZE] = { 0 };
+static ut_char_t _ut_print_format_buffer[UT_PRINT_FORMAT_BUFFER_SIZE] = { 0 };
 
 
 
@@ -77,14 +77,14 @@ void ut_printf(const ut_char_t* format, ...)
 	va_list   args;
 
 
-	max_count = sizeof(_ut_print_buffer);
+	max_count = sizeof(_ut_print_format_buffer);
 	va_start(args, format);
-	length = vsnprintf(_ut_print_buffer, max_count, format, args);
+	length = vsnprintf(_ut_print_format_buffer, max_count, format, args);
 	va_end(args);
 
 	if (length > 0u)
 	{
-		ut_print_string(_ut_print_buffer, length);
+		ut_print_string(_ut_print_format_buffer, length);
 	}
 }
 
@@ -95,14 +95,14 @@ void ut_printfln(const ut_char_t* format, ...)
 	va_list   args;
 
 
-	max_count = sizeof(_ut_print_buffer);
+	max_count = sizeof(_ut_print_format_buffer);
 	va_start(args, format);
-	length = vsnprintf(_ut_print_buffer, max_count, format, args);
+	length = vsnprintf(_ut_print_format_buffer, max_count, format, args);
 	va_end(args);
 
 	if (length > 0u)
 	{
-		ut_print_string(_ut_print_buffer, length);
+		ut_print_string(_ut_print_format_buffer, length);
 		ut_print_endline();
 	}
 }
