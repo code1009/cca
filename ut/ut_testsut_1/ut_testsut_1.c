@@ -39,19 +39,14 @@ ut_testsuite(simple_suite1, "단순 테스트슈트")
 /***************************************************************************/
 void ut_testsut_1(void)
 {
-	ut_print_endline();
-	ut_println("#############################################################################");
-	ut_print_endline();
-	ut_println("TESTSUT 1");
-	ut_print_endline();
-	ut_println("#############################################################################");
+	ut_testsut_print("1");
 
 
 
 	int param = 3;
 
 
-	ut_testrunner(ut_testsuite_instance(simple_suite1), &param);
+	ut_testrunner(ut_testsuite_instance(simple_suite1), &param, ut_nullptr);
 }
 
 

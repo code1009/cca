@@ -100,7 +100,7 @@ void ut_testsut_1(void)
 	int param = 3;
 
 
-	ut_testrunner(ut_testsuite_instance(simple_suite1), &param);
+	ut_testrunner(ut_testsuite_instance(simple_suite1), &param, ut_nullptr);
 }
 
 int main()

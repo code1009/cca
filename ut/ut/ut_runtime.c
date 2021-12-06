@@ -33,21 +33,21 @@
 typedef void (*ut_signal_handler_t)(int);
 
 /*=========================================================================*/
-static ut_signal_handler_t _ut_previous_signal_handler_SIGSEGV = ut_nullptr;
-static ut_signal_handler_t _ut_previous_signal_handler_SIGFPE  = ut_nullptr;
-static ut_signal_handler_t _ut_previous_signal_handler_SIGINT  = ut_nullptr;
-static ut_signal_handler_t _ut_previous_signal_handler_SIGILL  = ut_nullptr;
-static ut_signal_handler_t _ut_previous_signal_handler_SIGTERM = ut_nullptr;
-static ut_signal_handler_t _ut_previous_signal_handler_SIGABRT = ut_nullptr;
+static ut_signal_handler_t _ut_rt_previous_signal_handler_SIGSEGV = ut_nullptr;
+static ut_signal_handler_t _ut_rt_previous_signal_handler_SIGFPE  = ut_nullptr;
+static ut_signal_handler_t _ut_rt_previous_signal_handler_SIGINT  = ut_nullptr;
+static ut_signal_handler_t _ut_rt_previous_signal_handler_SIGILL  = ut_nullptr;
+static ut_signal_handler_t _ut_rt_previous_signal_handler_SIGTERM = ut_nullptr;
+static ut_signal_handler_t _ut_rt_previous_signal_handler_SIGABRT = ut_nullptr;
 
-static jmp_buf _ut_jump_env;
+static jmp_buf _ut_rt_jump_env;
 
 
 
 
 
 /***************************************************************************/
-static void ut_signal_handler(int signal)
+static void ut_rt_signal_handler(int signal)
 {
 	/*
 	switch (signal)
@@ -63,7 +63,7 @@ static void ut_signal_handler(int signal)
 	}
 	*/
 
-	longjmp(_ut_jump_env, 1);
+	longjmp(_ut_rt_jump_env, 1);
 }
 
 
@@ -71,12 +71,12 @@ static void ut_signal_handler(int signal)
 /***************************************************************************/
 void ut_rt_exception_handler_initalize(void)
 {
-	_ut_previous_signal_handler_SIGSEGV = signal(SIGSEGV, ut_signal_handler);
-	_ut_previous_signal_handler_SIGFPE  = signal(SIGFPE , ut_signal_handler);
-	_ut_previous_signal_handler_SIGINT  = signal(SIGINT , ut_signal_handler);
-	_ut_previous_signal_handler_SIGILL  = signal(SIGILL , ut_signal_handler);
-	_ut_previous_signal_handler_SIGTERM = signal(SIGTERM, ut_signal_handler);
-	_ut_previous_signal_handler_SIGABRT = signal(SIGABRT, ut_signal_handler);
+	_ut_rt_previous_signal_handler_SIGSEGV = signal(SIGSEGV, ut_rt_signal_handler);
+	_ut_rt_previous_signal_handler_SIGFPE  = signal(SIGFPE , ut_rt_signal_handler);
+	_ut_rt_previous_signal_handler_SIGINT  = signal(SIGINT , ut_rt_signal_handler);
+	_ut_rt_previous_signal_handler_SIGILL  = signal(SIGILL , ut_rt_signal_handler);
+	_ut_rt_previous_signal_handler_SIGTERM = signal(SIGTERM, ut_rt_signal_handler);
+	_ut_rt_previous_signal_handler_SIGABRT = signal(SIGABRT, ut_rt_signal_handler);
 }
 
 ut_bool_t ut_rt_execute_testcase (ut_testcase_function_t run, ut_testcontext_t* context)
@@ -89,7 +89,7 @@ ut_bool_t ut_rt_execute_testcase (ut_testcase_function_t run, ut_testcontext_t* 
 	result = ut_true;
 
 
-	jmp_rval = setjmp(_ut_jump_env);
+	jmp_rval = setjmp(_ut_rt_jump_env);
 	if (0 == jmp_rval)
 	{
 #ifdef _MSC_VER

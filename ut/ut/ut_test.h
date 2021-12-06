@@ -24,8 +24,13 @@ UT_API void ut_testrunner_assert_condition(
 	const ut_char_t* function,
 	void* context);
 
-UT_API void ut_testrunner (ut_testsuite_t* suite, void* param);
+UT_API void ut_testrunner (ut_testsuite_t* suite, void* param, ut_testrunner_report_t* report);
 
+UT_API void ut_testrunner_report_reset(ut_testrunner_report_t* r);
+UT_API void ut_testrunner_report_accumulate(ut_testrunner_report_t* a, ut_testrunner_report_t* r);
+UT_API void ut_testrunner_report_print(ut_testrunner_report_t* r);
+
+UT_API void ut_testsut_print(const ut_char_t* name);
 
 
 

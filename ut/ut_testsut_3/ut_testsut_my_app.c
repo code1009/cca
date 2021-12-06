@@ -97,15 +97,8 @@ ut_testsuite(my_app_suite1, ut_nullptr)
 /* 테스트SUT */
 void ut_testsut_my_app(void)
 {
-	ut_print_endline();
-	ut_println("#############################################################################");
-	ut_print_endline();
-	ut_println("TESTSUT my_app");
-	ut_print_endline();
-	ut_println("#############################################################################");
+	ut_testsut_print("my_app");
 
-
-
-	ut_testrunner(ut_testsuite_instance(my_app_suite1), ut_nullptr);
+	ut_testrunner(ut_testsuite_instance(my_app_suite1), ut_nullptr, ut_nullptr);
 }
 

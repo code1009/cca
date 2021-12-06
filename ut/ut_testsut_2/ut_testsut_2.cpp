@@ -105,22 +105,22 @@ ut_testsuite(suite2, ut_nullptr)
 /***************************************************************************/
 UT_API void ut_testsut_2(void)
 {
-	ut_print_endline();
-	ut_println("#############################################################################");
-	ut_print_endline();
-	ut_println("TESTSUT 2");
-	ut_print_endline();
-	ut_println("#############################################################################");
-
+	ut_testsut_print("2");
 
 
 	int a = 1;
 
+	ut_testrunner_report_t r;
 
-	ut_testrunner(ut_testsuite_instance(suite1), ut_nullptr);
-	ut_testrunner(ut_testsuite_instance(suite2), &a);
 
-	ut_testrunner(ut_testsuite_instance(simple_suite1), &a);
+	ut_testrunner_report_reset(&r);
+
+	ut_testrunner(ut_testsuite_instance(suite1), ut_nullptr, &r);
+	ut_testrunner(ut_testsuite_instance(suite2), &a, &r);
+
+	ut_testrunner(ut_testsuite_instance(simple_suite1), &a, &r);
+
+	ut_testrunner_report_print(&r);
 }
 
 
