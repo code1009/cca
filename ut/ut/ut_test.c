@@ -421,6 +421,7 @@ void ut_testrunner_print_suite_tail(ut_testcontext_t* context)
 	ut_get_clocktime(&t);
 	ut_printfln("  time = %u.%09u sec", t.second, t.nanosecond);
 
+
 	//-----------------------------------------------------------------------
 	ut_print_endline();
 }
