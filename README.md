@@ -100,13 +100,13 @@ void ut_testsut_1(void)
 	int param = 3;
 
 
-	ut_testinvoke_initialize();
-
 	ut_testrunner(ut_testsuite_instance(simple_suite1), &param);
 }
 
 int main()
 {
+	ut_rt_initialize();
+
 	ut_testsut_1();
 
 

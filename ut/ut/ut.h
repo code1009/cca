@@ -44,11 +44,8 @@
 - 테스트결과를 작성
 
 # 테스트어썰트(testassert)
-- 테스트의 기대값 확인여부
+- 테스트의 기대값 확인
 - 테스트의 확인
-
-# 테스트인보크(testinvoke)
-- 테스트케이스 실행
 
 
 
@@ -86,14 +83,12 @@
 #include "ut_type.h"
 #include "ut_print.h"
 #include "ut_time.h"
-#include "ut_runtime.h"
 
 #include "ut_test_struct.h"
 #include "ut_test_macro.h"
 #include "ut_test.h"
 
-#include "ut_testinvoke.h"
-#include "ut_testrunner.h"
+#include "ut_runtime.h"
 
 
 

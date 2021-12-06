@@ -1,8 +1,6 @@
 ﻿/***************************************************************************/
-#include "ut/ut.h"
+#include "../ut/ut.h"
 #include "ut_testsut_my_app.h"
-
-
 
 
 
@@ -39,8 +37,6 @@ MY_API int ut_testdouble__my_div__skeleton (int a, int b)
 
 	return _ut_testdouble__my_div__return;
 }
-
-
 
 
 
@@ -86,8 +82,6 @@ ut_testcase(my_app_case2, ut_nullptr)
 
 
 
-
-
 /***************************************************************************/
 /* 테스트슈트 */
 ut_testsuite_case_begin(my_app_suite1)
@@ -97,4 +91,21 @@ ut_testsuite_case_end()
 
 ut_testsuite(my_app_suite1, ut_nullptr)
 
+
+
+/***************************************************************************/
+/* 테스트SUT */
+void ut_testsut_my_app(void)
+{
+	ut_print_endline();
+	ut_println("#############################################################################");
+	ut_print_endline();
+	ut_println("TESTSUT my_app");
+	ut_print_endline();
+	ut_println("#############################################################################");
+
+
+
+	ut_testrunner(ut_testsuite_instance(my_app_suite1), ut_nullptr);
+}
 

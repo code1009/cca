@@ -139,30 +139,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ut\ut_test.c" />
-    <ClCompile Include="ut\ut_testinvoke.c" />
     <ClCompile Include="ut\ut_time.c" />
     <ClCompile Include="ut_example.cpp" />
     <ClCompile Include="ut\ut_print.c" />
-    <ClCompile Include="ut\ut_runtime_windows.c" />
-    <ClCompile Include="ut\ut_testrunner.c" />
-    <ClCompile Include="ut_testsut_my_app.c" />
+    <ClCompile Include="ut\ut_runtime.c" />
+    <ClCompile Include="ut\ut_test.c" />
+    <ClCompile Include="ut_testsut_1\ut_testsut_1.c" />
+    <ClCompile Include="ut_testsut_2\ut_testsut_2.cpp" />
+    <ClCompile Include="ut_testsut_3\ut_testsut_my_app.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="my_app_main.h" />
-    <ClInclude Include="my_app_module.h" />
     <ClInclude Include="ut\ut.h" />
     <ClInclude Include="ut\ut_define.h" />
     <ClInclude Include="ut\ut_print.h" />
     <ClInclude Include="ut\ut_runtime.h" />
-    <ClInclude Include="ut\ut_test.h" />
-    <ClInclude Include="ut\ut_testinvoke.h" />
     <ClInclude Include="ut\ut_test_macro.h" />
-    <ClInclude Include="ut\ut_testrunner.h" />
+    <ClInclude Include="ut\ut_test.h" />
     <ClInclude Include="ut\ut_test_struct.h" />
     <ClInclude Include="ut\ut_time.h" />
     <ClInclude Include="ut\ut_type.h" />
-    <ClInclude Include="ut_testsut_my_app.h" />
+    <ClInclude Include="ut_testsut_1\ut_testsut_1.h" />
+    <ClInclude Include="ut_testsut_2\ut_testsut_2.hpp" />
+    <ClInclude Include="ut_testsut_3\my_app_define.h" />
+    <ClInclude Include="ut_testsut_3\my_app_main.h" />
+    <ClInclude Include="ut_testsut_3\my_app_module.h" />
+    <ClInclude Include="ut_testsut_3\ut_testsut_my_app.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

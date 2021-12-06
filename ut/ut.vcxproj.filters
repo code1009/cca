@@ -19,31 +19,40 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="ut_testsut_1">
+      <UniqueIdentifier>{f06e744d-69eb-4a46-9f5a-d21e0089930d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ut_testsut_2">
+      <UniqueIdentifier>{1248a4cd-05ae-4440-bb62-aa1bac20d57b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ut_testsut_3">
+      <UniqueIdentifier>{565663a3-ebb7-4004-9084-95b53872c4fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ut_example.cpp">
       <Filter>win\소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="ut\ut_testrunner.c">
+    <ClCompile Include="ut\ut_test.c">
       <Filter>ut</Filter>
     </ClCompile>
     <ClCompile Include="ut\ut_print.c">
       <Filter>ut</Filter>
     </ClCompile>
-    <ClCompile Include="ut\ut_runtime_windows.c">
+    <ClCompile Include="ut\ut_runtime.c">
       <Filter>ut</Filter>
     </ClCompile>
     <ClCompile Include="ut\ut_time.c">
       <Filter>ut</Filter>
     </ClCompile>
-    <ClCompile Include="ut\ut_test.c">
-      <Filter>ut</Filter>
+    <ClCompile Include="ut_testsut_1\ut_testsut_1.c">
+      <Filter>ut_testsut_1</Filter>
     </ClCompile>
-    <ClCompile Include="ut_testsut_my_app.c">
-      <Filter>win\소스 파일</Filter>
+    <ClCompile Include="ut_testsut_2\ut_testsut_2.cpp">
+      <Filter>ut_testsut_2</Filter>
     </ClCompile>
-    <ClCompile Include="ut\ut_testinvoke.c">
-      <Filter>ut</Filter>
+    <ClCompile Include="ut_testsut_3\ut_testsut_my_app.c">
+      <Filter>ut_testsut_3</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -53,7 +62,7 @@
     <ClInclude Include="ut\ut_test_macro.h">
       <Filter>ut</Filter>
     </ClInclude>
-    <ClInclude Include="ut\ut_testrunner.h">
+    <ClInclude Include="ut\ut_test.h">
       <Filter>ut</Filter>
     </ClInclude>
     <ClInclude Include="ut\ut_test_struct.h">
@@ -74,20 +83,23 @@
     <ClInclude Include="ut\ut_time.h">
       <Filter>ut</Filter>
     </ClInclude>
-    <ClInclude Include="ut\ut_test.h">
-      <Filter>ut</Filter>
+    <ClInclude Include="ut_testsut_1\ut_testsut_1.h">
+      <Filter>ut_testsut_1</Filter>
     </ClInclude>
-    <ClInclude Include="ut_testsut_my_app.h">
-      <Filter>win\소스 파일</Filter>
+    <ClInclude Include="ut_testsut_3\ut_testsut_my_app.h">
+      <Filter>ut_testsut_3</Filter>
     </ClInclude>
-    <ClInclude Include="my_app_main.h">
-      <Filter>win\소스 파일</Filter>
+    <ClInclude Include="ut_testsut_3\my_app_define.h">
+      <Filter>ut_testsut_3</Filter>
     </ClInclude>
-    <ClInclude Include="my_app_module.h">
-      <Filter>win\소스 파일</Filter>
+    <ClInclude Include="ut_testsut_3\my_app_main.h">
+      <Filter>ut_testsut_3</Filter>
     </ClInclude>
-    <ClInclude Include="ut\ut_testinvoke.h">
-      <Filter>ut</Filter>
+    <ClInclude Include="ut_testsut_3\my_app_module.h">
+      <Filter>ut_testsut_3</Filter>
+    </ClInclude>
+    <ClInclude Include="ut_testsut_2\ut_testsut_2.hpp">
+      <Filter>ut_testsut_2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

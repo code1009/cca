@@ -1,11 +1,11 @@
-﻿#ifndef ut_testsut_my_app__h
-#define ut_testsut_my_app__h
+﻿#ifndef ut_testsut_1__h
+#define ut_testsut_1__h
 
 /***************************************************************************/
 
 /* ==========================================================================
 **
-** ut_testsut_my_app.h
+** ut_testsut_1.h
 **
 ** created by MOON, Eui-kwon.
 ** created on DEC-2nd, 2021.
@@ -15,11 +15,15 @@
 
 
 
+/***************************************************************************/
+ut_testcase_extern(simple_case1);
+ut_testcase_extern(simple_case2);
+ut_testsuite_extern(simple_suite1);
+
+
 
 /***************************************************************************/
-ut_testcase_extern(my_app_case1);
-ut_testsuite_extern(my_app_suite1);
-
+UT_API void ut_testsut_1(void);
 
 
 
