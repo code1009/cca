@@ -56,14 +56,23 @@
 # 테스트더블(testdouble)
 - 테스트 환경구축을 위한 가짜 함수/객체/변수 또는 감시도구 들
 - 종류
-  Dummy: 가짜 파라메터 정보
-  Fake:  SUT 내부에서 호출되어지는 객체/함수를 가짜로 만든 객체/함수
-         가짜로 만든 객체/함수는 SUT에서 호출하는 함수와 동일한 동작을 수행
-  Stub:  SUT가 호출 하는 함수들을 테스트틀 위해서 구현한 함수
-         테스트를 하기 위해서 응답(동작)이 고정적으로 동작하도록 구성
-  Spy:   SUT을 감시(예: 수행횟수)
-  Mock:  Fake 다르게 기대 값을 반환하도록 한 객체/함수
-- https://jesusvalerareales.medium.com/testing-with-test-doubles-7c3abb9eb3f2
+  1. Dummy
+     가짜 파라메터 정보
+  2. Fake
+     SUT 내부에서 호출되어지는 객체/함수를 가짜로 만든 객체/함수
+     가짜로 만든 객체/함수는 SUT에서 호출하는 함수와 동일한 동작을 수행
+  3. Stub
+     SUT가 호출 하는 함수들을 테스트틀 위해서 구현한 함수
+     테스트를 하기 위해서 응답(동작)이 고정적으로 동작하도록 구성
+  4. Spy
+     SUT을 감시(예: 수행횟수)
+  5. Mock
+     Fake 다르게 기대 값을 반환하도록 한 객체/함수
+- REF URL
+  https://jesusvalerareales.medium.com/testing-with-test-doubles-7c3abb9eb3f2
+  https://blog.pragmatists.com/test-doubles-fakes-mocks-and-stubs-1a7491dfa3da
+  http://xunitpatterns.com/Test%20Double.html
+  https://martinfowler.com/bliki/TestDouble.html
 
 # SUT
 - SYSTEM UNDER TEST
