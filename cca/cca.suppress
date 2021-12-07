@@ -1,0 +1,210 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="SuppressVersion">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CurrentVersion" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="cca">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FileName" type="xs:string" default="" />
+                <xs:element name="ErrorCode" type="xs:string" default="" />
+                <xs:element name="Message" type="xs:string" default="" />
+                <xs:element name="CodePrev" type="xs:unsignedInt" default="0" />
+                <xs:element name="CodeCurrent" type="xs:unsignedInt" default="0" />
+                <xs:element name="CodeNext" type="xs:unsignedInt" default="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//cca" />
+        <xs:field xpath="FileName" />
+        <xs:field xpath="ErrorCode" />
+        <xs:field xpath="Message" />
+        <xs:field xpath="CodePrev" />
+        <xs:field xpath="CodeCurrent" />
+        <xs:field xpath="CodeNext" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <SuppressVersion>
+    <CurrentVersion>2</CurrentVersion>
+  </SuppressVersion>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <CodePrev>11496</CodePrev>
+    <CodeCurrent>180881899</CodeCurrent>
+    <CodeNext>11376641</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V576</ErrorCode>
+    <Message>Incorrect format. Consider checking the fourth actual argument of the 'printf' function. The SIGNED integer type argument is expected.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2585011767</CodeCurrent>
+    <CodeNext>2991282121</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V550</ErrorCode>
+    <Message>An odd precise comparison: _._f == coverage. It's probably better to use a comparison with defined precision: fabs(A - B) &lt; Epsilon.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>11108087</CodeCurrent>
+    <CodeNext>123</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'i' to memsize type in an arithmetic expression: file_pointer + i</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>98123285</CodeCurrent>
+    <CodeNext>188127</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'i' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <CodePrev>1349905941</CodePrev>
+    <CodeCurrent>473</CodeCurrent>
+    <CodeNext>41</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V576</ErrorCode>
+    <Message>Incorrect format. Consider checking the second actual argument of the 'printf' function. The SIGNED integer type argument is expected.</Message>
+    <CodePrev>2584286759</CodePrev>
+    <CodeCurrent>3044489707</CodeCurrent>
+    <CodeNext>3024356913</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'i' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <CodePrev>185593365</CodePrev>
+    <CodeCurrent>473</CodeCurrent>
+    <CodeNext>41</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'i' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <CodePrev>3606441493</CodePrev>
+    <CodeCurrent>473</CodeCurrent>
+    <CodeNext>41</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'i' to memsize type in an arithmetic expression: pointer + i</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3053077</CodeCurrent>
+    <CodeNext>188127</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V813</ErrorCode>
+    <Message>Decreased performance. The 'cca_csv_filename' argument should probably be rendered as a constant reference.</Message>
+    <CodePrev>217115</CodePrev>
+    <CodeCurrent>310877320</CodeCurrent>
+    <CodeNext>123</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'i' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <CodePrev>2041048617</CodePrev>
+    <CodeCurrent>473</CodeCurrent>
+    <CodeNext>41</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'i' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <CodePrev>2624974382</CodePrev>
+    <CodeCurrent>473</CodeCurrent>
+    <CodeNext>41</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'i' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <CodePrev>3371560490</CodePrev>
+    <CodeCurrent>473</CodeCurrent>
+    <CodeNext>41</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V519</ErrorCode>
+    <Message>The 'hFile' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: _, _.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2978369682</CodeCurrent>
+    <CodeNext>2811628972</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V121</ErrorCode>
+    <Message>Implicit conversion of the type of 'new' operator's argument to size_t type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2147967943</CodeCurrent>
+    <CodeNext>46597625</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V813</ErrorCode>
+    <Message>Decreased performance. The 'file_path' argument should probably be rendered as a constant reference.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2799773473</CodeCurrent>
+    <CodeNext>123</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V813</ErrorCode>
+    <Message>Decreased performance. The 'file_path' argument should probably be rendered as a constant reference.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1385423498</CodeCurrent>
+    <CodeNext>123</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V519</ErrorCode>
+    <Message>The 'hFind' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: _, _.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3884945864</CodeCurrent>
+    <CodeNext>2811628966</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V809</ErrorCode>
+    <Message>Verifying that a pointer value is not NULL is not required. The 'if (_pointer != nullptr)' check can be removed.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>99351709</CodeCurrent>
+    <CodeNext>123</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V523</ErrorCode>
+    <Message>The 'then' statement is equivalent to the 'else' statement.</Message>
+    <CodePrev>539</CodePrev>
+    <CodeCurrent>123</CodeCurrent>
+    <CodeNext>2585011767</CodeNext>
+  </cca>
+  <cca>
+    <FileName>cca.cpp</FileName>
+    <ErrorCode>V576</ErrorCode>
+    <Message>Incorrect format. Consider checking the second actual argument of the 'printf' function. The SIGNED integer type argument is expected.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2781840972</CodeCurrent>
+    <CodeNext>2991282121</CodeNext>
+  </cca>
+</NewDataSet>

@@ -1,4 +1,9 @@
-﻿/////////////////////////////////////////////////////////////////////////////
+﻿// This is an open source non-commercial project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
+
+
+/////////////////////////////////////////////////////////////////////////////
 //
 // header files
 // 
@@ -91,7 +96,7 @@ std::int32_t file_loader::get_size(std::string file_path)
 	BOOL   bRv;
 
 
-	hFind = INVALID_HANDLE_VALUE;
+//	hFind = INVALID_HANDLE_VALUE;
 	memset(&FindData, 0, sizeof(FindData));
 
 	hFile = INVALID_HANDLE_VALUE;
@@ -155,7 +160,7 @@ bool file_loader::load(void)
 	BOOL   bRv;
 
 	
-	hFile = INVALID_HANDLE_VALUE;
+//	hFile = INVALID_HANDLE_VALUE;
 	dwRSize = 0u;
 	
 	hFile = ::CreateFileA(_file_path.c_str(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
@@ -1078,7 +1083,8 @@ void cca::report_source_file_contents_line (cca_source_file* e, std::string& fil
 
 		if (1.0f == coverage)
 		{
-			printf("%6u | %.1f | %4d |", frequency, coverage, line_number);
+//			printf("%6u | %.1f | %4d |", frequency, coverage, line_number);
+			printf("%6u | OK  | %4d |", frequency, line_number);
 			puts(line_string_pointer);
 		}
 		else
