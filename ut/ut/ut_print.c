@@ -73,13 +73,13 @@ void ut_println(const ut_char_t* message)
 void ut_printf(const ut_char_t* format, ...)
 {
 	ut_size_t max_count;
-	ut_size_t length;
-	va_list   args;
+	ut_int_t length;
+	va_list args;
 
 
 	max_count = sizeof(_ut_print_format_buffer);
 	va_start(args, format);
-	length = vsnprintf(_ut_print_format_buffer, max_count, format, args);
+	length = ut_rt_vsnprintf(_ut_print_format_buffer, max_count, format, args);
 	va_end(args);
 
 	if (length > 0u)
@@ -91,13 +91,13 @@ void ut_printf(const ut_char_t* format, ...)
 void ut_printfln(const ut_char_t* format, ...)
 {
 	ut_size_t max_count;
-	ut_size_t length;
-	va_list   args;
+	ut_int_t length;
+	va_list args;
 
 
 	max_count = sizeof(_ut_print_format_buffer);
 	va_start(args, format);
-	length = vsnprintf(_ut_print_format_buffer, max_count, format, args);
+	length = ut_rt_vsnprintf(_ut_print_format_buffer, max_count, format, args);
 	va_end(args);
 
 	if (length > 0u)

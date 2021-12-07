@@ -119,6 +119,11 @@ ut_bool_t ut_rt_execute_testcase (ut_testcase_function_t run, ut_testcontext_t* 
 
 
 /***************************************************************************/
+ut_int_t ut_rt_vsnprintf(ut_char_t* buffer, ut_size_t count, const ut_char_t* format, va_list va)
+{
+	return vsnprintf(buffer, count, format, va);
+}
+
 void ut_rt_putch(ut_char_t ch)
 {
 	putc(ch, stdout);
