@@ -74,9 +74,6 @@
     <ClInclude Include="ut\ut.h">
       <Filter>ut</Filter>
     </ClInclude>
-    <ClInclude Include="ut\ut_define.h">
-      <Filter>ut</Filter>
-    </ClInclude>
     <ClInclude Include="ut\ut_runtime.h">
       <Filter>ut</Filter>
     </ClInclude>
