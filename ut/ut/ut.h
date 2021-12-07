@@ -47,6 +47,9 @@
 - 테스트의 기대값 확인
 - 테스트의 확인
 
+# 테스트리포트(testreport)
+- 테스트 보고서
+
 
 
 # 테스트더블(testdouble)
@@ -64,8 +67,10 @@
 
 
 
+
 # ISTQB
 - International Software Testing Qualifications Board
+
 
 
 */
