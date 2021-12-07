@@ -79,7 +79,7 @@ void ut_printf(const ut_char_t* format, ...)
 	length = ut_rt_vsnprintf(_ut_print_format_buffer, max_count, format, args);
 	va_end(args);
 
-	if (length > 0u)
+	if (length > 0)
 	{
 		ut_print_string(_ut_print_format_buffer, length);
 	}
@@ -97,7 +97,7 @@ void ut_printfln(const ut_char_t* format, ...)
 	length = ut_rt_vsnprintf(_ut_print_format_buffer, max_count, format, args);
 	va_end(args);
 
-	if (length > 0u)
+	if (length > 0)
 	{
 		ut_print_string(_ut_print_format_buffer, length);
 		ut_print_endline();
