@@ -63,6 +63,7 @@
 
 # SUT
 - SYSTEM UNDER TEST
+- 테스트 대상 의미
 
 
 

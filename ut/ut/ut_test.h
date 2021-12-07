@@ -29,7 +29,7 @@ UT_API void ut_testrunner (ut_testsuite_t* suite, void* param, ut_testreport_t* 
 UT_API void ut_testreport_reset(ut_testreport_t* r);
 UT_API void ut_testreport_print(ut_testreport_t* r);
 
-UT_API void ut_testsut_print(const ut_char_t* name);
+UT_API void ut_test_print(const ut_char_t* name);
 
 
 

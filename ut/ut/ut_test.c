@@ -690,15 +690,15 @@ void ut_testreport_print (ut_testreport_t* r)
 
 
 /***************************************************************************/
-/* 테스트SUT */
+/* 테스트 */
 /***************************************************************************/
-void ut_testsut_print(const ut_char_t* name)
+void ut_test_print(const ut_char_t* name)
 {
 	//-----------------------------------------------------------------------
 	ut_print_endline();
 	ut_println("#############################################################################");
 	ut_print_endline();
-	ut_printfln("[%s] TESTSUT", name);
+	ut_printfln("[%s]", name);
 	ut_print_endline();
 	ut_println("#############################################################################");
 	ut_print_endline();

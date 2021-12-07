@@ -58,7 +58,8 @@ count : 1
 1. 아래와 같이 테스트 코드 작성 하여 실행 하면
 ~~~c++
 /***************************************************************************/
-#include "ut/ut.h"
+#include "../ut/ut.h"
+#include "ut_test_1.h"
 
 
 
@@ -95,7 +96,7 @@ ut_testsuite(simple_suite1, "단순 테스트슈트")
 
 
 /***************************************************************************/
-void ut_testsut_1(void)
+void ut_test_1(void)
 {
 	int param = 3;
 
@@ -103,11 +104,14 @@ void ut_testsut_1(void)
 	ut_testrunner(ut_testsuite_instance(simple_suite1), &param, ut_nullptr);
 }
 
+
+
+/***************************************************************************/
 int main()
 {
 	ut_rt_initialize();
 
-	ut_testsut_1();
+	ut_test_1();
 
 
 	return 0;
@@ -121,7 +125,7 @@ int main()
 *****************************************************************************
 # [simple_suite1] TESTSUITE BEGIN
   :단순 테스트슈트
-  time = 1638529060.665552900 sec
+  time = 1638838733.453190800 sec
 *****************************************************************************
 -----------------------------------------------------------------------------
 # [simple_case1] TESTCASE BEGIN
@@ -129,8 +133,8 @@ int main()
 # TEST ASSERTION FAILED
   TESTSUITE : simple_suite1
   TESTCASE  : simple_case1
-  FILE      : D:\prj\cca\ut\ut_example.cpp
-  LINE      : 128
+  FILE      : D:\prj\cca\ut\ut_test_1\ut_test_1.c
+  LINE      : 11
   FUNCTION  : ut_testcase__simple_case1
   EXPRESSION: 1 == 0
 # [simple_case1] TESTCASE END
@@ -143,7 +147,7 @@ int main()
 
 *****************************************************************************
 # [simple_suite1] TESTSUITE END
-  time = 1638529060.699553600 sec
+  time = 1638838733.486191200 sec
 
 *****************************************************************************
 # [simple_suite1] TESTSUITE RESULT
@@ -152,11 +156,11 @@ int main()
 ---------+---------------+-------+-------+-------+---------------------------
  RESULT  | RUNTIME       | OK    | FAIL  | HALT  | TESTCASE
 ---------+---------------+-------+-------+-------+---------------------------
-[ FAIL ] |   0.009000500 |     1 |     1 |     0 | [simple_case1] 단순 테스트케이스1
-[ OK   ] |   0.000000000 |     2 |     0 |     0 | [simple_case2] 단순 테스트케이스2
+[ FAIL ] |   0.008000700 |     1 |     1 |     0 | [simple_case1] 단순 테스트케이스1
+[ OK   ] |   0.001000400 |     2 |     0 |     0 | [simple_case2] 단순 테스트케이스2
 ---------+---------------+-------+-------+-------+---------------------------
 
-TESTSUITE RUNTIME  : 0.009000500
+TESTSUITE RUNTIME  : 0.009001100
 TESTSUITE SUCCESS  : 75.00 % (3/4)
 
 TESTCASE COUNT     : 2

@@ -1,11 +1,11 @@
-﻿#ifndef ut_testsut_1__h
-#define ut_testsut_1__h
+﻿#ifndef ut_test_1__h
+#define ut_test_1__h
 
 /***************************************************************************/
 
 /* ==========================================================================
 **
-** ut_testsut_1.h
+** ut_test_1.h
 **
 ** created by MOON, Eui-kwon.
 ** created on DEC-2nd, 2021.
@@ -23,7 +23,7 @@ ut_testsuite_extern(simple_suite1);
 
 
 /***************************************************************************/
-UT_API void ut_testsut_1(void);
+UT_API void ut_test_1(void);
 
 
 

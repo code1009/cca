@@ -1,8 +1,8 @@
 ﻿/***************************************************************************/
 #include "../ut/ut.h"
-#include "../ut_testsut_1/ut_testsut_1.h"
+#include "../ut_test_1/ut_test_1.h"
 
-#include "ut_testsut_2.hpp"
+#include "ut_test_2.hpp"
 
 
 
@@ -103,9 +103,9 @@ ut_testsuite(suite2, ut_nullptr)
 
 
 /***************************************************************************/
-UT_API void ut_testsut_2(void)
+UT_API void ut_test_2(void)
 {
-	ut_testsut_print("2");
+	ut_test_print("2");
 
 
 	int a = 1;

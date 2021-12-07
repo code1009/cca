@@ -1,9 +1,9 @@
 ﻿/***************************************************************************/
 #include "ut/ut.h"
 
-#include "ut_testsut_1/ut_testsut_1.h"
-#include "ut_testsut_2/ut_testsut_2.hpp"
-#include "ut_testsut_3/ut_testsut_my_app.h"
+#include "ut_test_1/ut_test_1.h"
+#include "ut_test_2/ut_test_2.hpp"
+#include "ut_test_3/ut_test_my_app.h"
 
 
 
@@ -12,9 +12,9 @@ int main()
 {
 	ut_rt_initialize();
 
-	ut_testsut_1();
-	ut_testsut_2();
-	ut_testsut_my_app();
+	ut_test_1();
+	ut_test_2();
+	ut_test_my_app();
 
 	return 0;
 }

@@ -1,6 +1,6 @@
 ﻿/***************************************************************************/
 #include "../ut/ut.h"
-#include "ut_testsut_1.h"
+#include "ut_test_1.h"
 
 
 
@@ -37,9 +37,9 @@ ut_testsuite(simple_suite1, "단순 테스트슈트")
 
 
 /***************************************************************************/
-void ut_testsut_1(void)
+void ut_test_1(void)
 {
-	ut_testsut_print("1");
+	ut_test_print("1");
 
 
 
