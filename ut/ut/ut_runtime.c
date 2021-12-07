@@ -68,8 +68,7 @@ static void ut_rt_signal_handler(int signal)
 
 
 
-/***************************************************************************/
-void ut_rt_exception_handler_initalize(void)
+static void ut_rt_exception_handler_initalize(void)
 {
 	_ut_rt_previous_signal_handler_SIGSEGV = signal(SIGSEGV, ut_rt_signal_handler);
 	_ut_rt_previous_signal_handler_SIGFPE  = signal(SIGFPE , ut_rt_signal_handler);
@@ -79,6 +78,9 @@ void ut_rt_exception_handler_initalize(void)
 	_ut_rt_previous_signal_handler_SIGABRT = signal(SIGABRT, ut_rt_signal_handler);
 }
 
+
+
+/***************************************************************************/
 ut_bool_t ut_rt_execute_testcase (ut_testcase_function_t run, ut_testcontext_t* context)
 {
 	ut_bool_t result;
