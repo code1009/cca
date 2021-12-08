@@ -68,8 +68,6 @@ static void ut_rt_signal_handler(int signal)
 	longjmp(_ut_rt_jump_env, 1);
 }
 
-
-
 static void ut_rt_exception_handler_initalize(void)
 {
 	_ut_rt_previous_signal_handler_SIGSEGV = signal(SIGSEGV, ut_rt_signal_handler);
@@ -78,6 +76,16 @@ static void ut_rt_exception_handler_initalize(void)
 	_ut_rt_previous_signal_handler_SIGILL  = signal(SIGILL , ut_rt_signal_handler);
 	_ut_rt_previous_signal_handler_SIGTERM = signal(SIGTERM, ut_rt_signal_handler);
 	_ut_rt_previous_signal_handler_SIGABRT = signal(SIGABRT, ut_rt_signal_handler);
+}
+
+static void ut_rt_exception_handler_uninitalize(void)
+{
+	if (ut_nullptr!=_ut_rt_previous_signal_handler_SIGSEGV) { signal(SIGSEGV, _ut_rt_previous_signal_handler_SIGSEGV); }
+	if (ut_nullptr!=_ut_rt_previous_signal_handler_SIGFPE ) { signal(SIGFPE , _ut_rt_previous_signal_handler_SIGFPE ); }
+	if (ut_nullptr!=_ut_rt_previous_signal_handler_SIGINT ) { signal(SIGINT , _ut_rt_previous_signal_handler_SIGINT ); }
+	if (ut_nullptr!=_ut_rt_previous_signal_handler_SIGILL ) { signal(SIGILL , _ut_rt_previous_signal_handler_SIGILL ); }
+	if (ut_nullptr!=_ut_rt_previous_signal_handler_SIGTERM) { signal(SIGTERM, _ut_rt_previous_signal_handler_SIGTERM); }
+	if (ut_nullptr!=_ut_rt_previous_signal_handler_SIGABRT) { signal(SIGABRT, _ut_rt_previous_signal_handler_SIGABRT); }
 }
 
 
@@ -185,6 +193,11 @@ void ut_rt_get_clocktime(ut_timespec_t* t)
 void ut_rt_initialize(void)
 {
 	ut_rt_exception_handler_initalize();
+}
+
+void ut_rt_uninitialize(void)
+{
+	ut_rt_exception_handler_uninitalize();
 }
 
 

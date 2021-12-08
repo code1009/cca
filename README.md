@@ -113,6 +113,7 @@ int main()
 
 	ut_test_1();
 
+	ut_rt_uninitialize();
 
 	return 0;
 }

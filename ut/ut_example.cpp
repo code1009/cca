@@ -22,6 +22,8 @@ int main()
 	ut_test_2();
 	ut_test_my_app();
 
+	ut_rt_uninitialize();
+
 	return 0;
 }
 
