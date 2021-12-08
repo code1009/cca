@@ -121,11 +121,28 @@ typedef ut_int32_t  ut_time_t;
 /////////////////////////////////////////////////////////////////////////////
 //===========================================================================
 #if defined ( __cplusplus )
-#	define UT_API extern "C"
+#	define UT_FUNC_DECL extern "C"
 #else
-#	define UT_API extern
+#	define UT_FUNC_DECL
 #endif
 
+#if defined ( __cplusplus )
+#	define UT_FUNC_IMPL extern "C"
+#else
+#	define UT_FUNC_IMPL
+#endif
+
+#if defined ( __cplusplus )
+#	define UT_GVAR_DECL extern "C"
+#else
+#	define UT_GVAR_DECL extern
+#endif
+
+#if defined ( __cplusplus )
+#	define UT_GVAR_IMPL extern "C"
+#else
+#	define UT_GVAR_IMPL
+#endif
 
 
 

@@ -103,24 +103,35 @@ ut_testsuite(suite2, ut_nullptr)
 
 
 /***************************************************************************/
-UT_API void ut_test_2(void)
+UT_FUNC_IMPL void ut_test_2(void)
 {
 	ut_test_print("2");
 
 
-	int a = 1;
+	int param = 1;
 
-	ut_testreport_t r;
+	ut_testreport_t report;
 
 
-	ut_testreport_reset_summary(&r);
+#if (UT_CONFIG_ENABLE_TESTREPORT_WRITER==1)
 
-	ut_testrunner(ut_testsuite_instance(suite1), ut_nullptr, &r);
-	ut_testrunner(ut_testsuite_instance(suite2), &a, &r);
+	report.writer = ut_nullptr;
+	
+	/* or */
+	report.writer = &_ut_testreport_writer_default;
 
-	ut_testrunner(ut_testsuite_instance(simple_suite1), &a, &r);
+	/* or */
+	report.writer = &_ut_testreport_writer_xml;
+#endif
 
-	ut_testreport_print_summary(&r);
+	ut_testreport_begin(&report, &param);
+
+	ut_testrunner(ut_testsuite_instance(suite1), ut_nullptr, &report);
+	ut_testrunner(ut_testsuite_instance(suite2), &param, &report);
+
+	ut_testrunner(ut_testsuite_instance(simple_suite1), &param, &report);
+
+	ut_testreport_end(&report, &param);
 }
 
 

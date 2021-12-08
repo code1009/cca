@@ -23,7 +23,7 @@ ut_testsuite_extern(my_app_suite1);
 
 
 /***************************************************************************/
-UT_API void ut_test_my_app(void);
+UT_FUNC_DECL void ut_test_my_app(void);
 
 
 

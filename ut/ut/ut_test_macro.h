@@ -20,10 +20,10 @@
 /***************************************************************************/
 /*=========================================================================*/
 #define ut_testfixture_setup(a_id) \
-UT_API void ut_testfixture_setup__##a_id (void* __context__)
+UT_FUNC_IMPL void ut_testfixture_setup__##a_id (void* __context__)
 
 #define ut_testfixture_teardown(a_id) \
-UT_API void ut_testfixture_teardown__##a_id (void* __context__)
+UT_FUNC_IMPL void ut_testfixture_teardown__##a_id (void* __context__)
 
 /*=========================================================================*/
 #define ut_testfixture_setup_instance(a_id) \
@@ -41,9 +41,9 @@ UT_API void ut_testfixture_teardown__##a_id (void* __context__)
 /***************************************************************************/
 /*=========================================================================*/
 #define ut_testcase(a_id, a_description) \
-UT_API void ut_testcase__##a_id (void* __context__); \
+UT_FUNC_DECL void ut_testcase__##a_id (void* __context__); \
 \
-UT_API ut_testcase_t _ut_testcase__##a_id = \
+UT_GVAR_IMPL ut_testcase_t _ut_testcase__##a_id = \
 { \
 	#a_id, \
 	a_description, \
@@ -51,13 +51,13 @@ UT_API ut_testcase_t _ut_testcase__##a_id = \
 	ut_testcase__##a_id \
 }; \
 \
-UT_API void ut_testcase__##a_id (void* __context__)
+UT_FUNC_IMPL void ut_testcase__##a_id (void* __context__)
 
 /*-------------------------------------------------------------------------*/
 #define ut_testcase_fixture(a_id, a_description, a_fixture_setup, a_fixture_teardown) \
-UT_API void ut_testcase__##a_id (void* param); \
+UT_FUNC_DECL void ut_testcase__##a_id (void* param); \
 \
-UT_API ut_testcase_t _ut_testcase__##a_id = \
+UT_GVAR_IMPL ut_testcase_t _ut_testcase__##a_id = \
 { \
 	#a_id, \
 	a_description, \
@@ -65,7 +65,7 @@ UT_API ut_testcase_t _ut_testcase__##a_id = \
 	ut_testcase__##a_id \
 }; \
 \
-UT_API void ut_testcase__##a_id (void* __context__)
+UT_FUNC_IMPL void ut_testcase__##a_id (void* __context__)
 
 /*=========================================================================*/
 #define ut_testcase_instance(a_id) \
@@ -73,7 +73,7 @@ UT_API void ut_testcase__##a_id (void* __context__)
 
 /*=========================================================================*/
 #define ut_testcase_extern(a_id) \
-UT_API ut_testcase_t _ut_testcase__##a_id;
+UT_GVAR_DECL ut_testcase_t _ut_testcase__##a_id;
 
 
 
@@ -100,7 +100,7 @@ UT_API ut_testcase_t _ut_testcase__##a_id;
 /***************************************************************************/
 /*=========================================================================*/
 #define ut_testsuite_case_begin(a_id) \
-UT_API ut_testsuite_case_t _ut_testsuite_case__##a_id [] = \
+UT_GVAR_IMPL ut_testsuite_case_t _ut_testsuite_case__##a_id [] = \
 {
 
 #define ut_testsuite_case(a_id) \
@@ -133,7 +133,7 @@ UT_API ut_testsuite_case_t _ut_testsuite_case__##a_id [] = \
 /***************************************************************************/
 /*=========================================================================*/
 #define ut_testsuite(a_id, a_description) \
-UT_API ut_testsuite_t _ut_testsuite__##a_id = \
+UT_GVAR_IMPL ut_testsuite_t _ut_testsuite__##a_id = \
 { \
 	#a_id, \
 	a_description, \
@@ -144,7 +144,7 @@ UT_API ut_testsuite_t _ut_testsuite__##a_id = \
 
 /*-------------------------------------------------------------------------*/
 #define ut_testsuite_fixture(a_id, a_description, a_fixture_setup, a_fixture_teardown) \
-UT_API ut_testsuite_t _ut_testsuite__##a_id = \
+UT_GVAR_IMPL ut_testsuite_t _ut_testsuite__##a_id = \
 { \
 	#a_id, \
 	a_description, \
@@ -159,7 +159,7 @@ UT_API ut_testsuite_t _ut_testsuite__##a_id = \
 
 /*=========================================================================*/
 #define ut_testsuite_extern(a_id) \
-UT_API ut_testsuite_t _ut_testsuite__##a_id;
+UT_GVAR_DECL ut_testsuite_t _ut_testsuite__##a_id;
 
 
 
@@ -184,7 +184,7 @@ UT_API ut_testsuite_t _ut_testsuite__##a_id;
 /* 테스트어설트 */
 /***************************************************************************/
 #define ut_testassert(X) \
-	ut_testrunner_assert_condition( (X), #X, __FILE__, __LINE__, __FUNCTION__, __context__ );
+	ut_testrunner_assert_condition(__context__, (X), #X, __FILE__, __LINE__, __FUNCTION__);
 
 
 

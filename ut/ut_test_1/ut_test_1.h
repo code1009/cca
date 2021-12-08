@@ -23,7 +23,7 @@ ut_testsuite_extern(simple_suite1);
 
 
 /***************************************************************************/
-UT_API void ut_test_1(void);
+UT_FUNC_DECL void ut_test_1(void);
 
 
 
