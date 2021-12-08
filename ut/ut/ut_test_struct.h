@@ -16,6 +16,32 @@
 
 
 /***************************************************************************/
+/* 테스트리포트 */
+/***************************************************************************/
+typedef struct _ut_testreport_summary_t
+{
+	ut_uint_t     assertion_success;
+	ut_uint_t     assertion_fail;
+	ut_uint_t     assertion_exception;
+	ut_uint_t     case_success;
+	ut_uint_t     case_fail;
+	ut_uint_t     case_exception;
+	ut_uint_t     case_count;
+	ut_uint_t     suite_count;
+	ut_timespec_t runtime;
+}
+ut_testreport_summary_t;
+
+typedef struct _ut_testreport_t
+{
+	ut_testreport_summary_t summary;
+}
+ut_testreport_t;
+
+
+
+
+/***************************************************************************/
 /* 테스트리절트 */
 /***************************************************************************/
 typedef struct _ut_testtime_t_t
@@ -86,6 +112,7 @@ typedef struct _ut_testsuite_t
 	ut_testfixture_t fixture;
 
 	ut_testsuite_case_t* test;
+	ut_testreport_t* report;
 }
 ut_testsuite_t;
 
@@ -102,24 +129,6 @@ typedef struct _ut_testcontext_t
 }
 ut_testcontext_t;
 
-
-
-/***************************************************************************/
-/* 테스트리포트 */
-/***************************************************************************/
-typedef struct _ut_testreport_t
-{
-	ut_uint_t     assertion_success;
-	ut_uint_t     assertion_fail;
-	ut_uint_t     assertion_exception;
-	ut_uint_t     case_success;
-	ut_uint_t     case_fail;
-	ut_uint_t     case_exception;
-	ut_uint_t     case_count;
-	ut_uint_t     suite_count;
-	ut_timespec_t runtime;
-}
-ut_testreport_t;
 
 
 

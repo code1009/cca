@@ -113,14 +113,14 @@ UT_API void ut_test_2(void)
 	ut_testreport_t r;
 
 
-	ut_testreport_reset(&r);
+	ut_testreport_reset_summary(&r);
 
 	ut_testrunner(ut_testsuite_instance(suite1), ut_nullptr, &r);
 	ut_testrunner(ut_testsuite_instance(suite2), &a, &r);
 
 	ut_testrunner(ut_testsuite_instance(simple_suite1), &a, &r);
 
-	ut_testreport_print(&r);
+	ut_testreport_print_summary(&r);
 }
 
 

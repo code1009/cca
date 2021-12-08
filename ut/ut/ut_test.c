@@ -65,7 +65,7 @@ ut_uint_t ut_testrunner_get_suite_case_count(ut_testsuite_t* suite)
 }
 
 /*=========================================================================*/
-void ut_testrunner_case_exception(void* context)
+void ut_testrunner_exception(void* context)
 {
 	ut_testcontext_t* ctx;
 
@@ -96,6 +96,8 @@ void ut_testrunner_assert_condition(
 
 
 	ctx = ut_testcontext_get(context);
+
+
 	if (condition)
 	{
 		if (ctx->suite_case)
@@ -126,41 +128,8 @@ void ut_testrunner_assert_condition(
 }
 
 /*=========================================================================*/
-void ut_testrunner_print_report(ut_testsuite_t* suite, ut_testreport_t* report)
+void ut_testrunner_print_suite_result(ut_testsuite_t* suite)
 {
-#if 0
-	//-----------------------------------------------------------------------
-	//	ut_println("#############################################################################");
-	//	ut_println("*****************************************************************************");
-	//	ut_println("=============================================================================");
-	//	ut_println("-----------------------------------------------------------------------------");
-
-
-	ut_print_endline();
-	ut_print_endline();
-	ut_print_endline();
-
-
-	ut_println("#############################################################################");
-
-	ut_print_endline();
-
-	ut_print("UT ");
-	ut_printf("%s ", UT_VERSION_STRING);
-	ut_print_endline();
-
-	ut_print_endline();
-
-	ut_println("#############################################################################");
-
-
-	ut_print_endline();
-	ut_print_endline();
-	ut_print_endline();
-#endif
-
-
-
 	//-----------------------------------------------------------------------
 	ut_println("*****************************************************************************");
 	ut_printfln("# [%s] TESTSUITE RESULT",
@@ -181,10 +150,10 @@ void ut_testrunner_print_report(ut_testsuite_t* suite, ut_testreport_t* report)
 	//-----------------------------------------------------------------------
 	const ut_char_t* assertion;
 
-	const ut_char_t* assertion_success   = "[ OK   ]";
-	const ut_char_t* assertion_fail      = "[ FAIL ]";
-	const ut_char_t* assertion_exception = "[ HALT ]";
-	const ut_char_t* assertion_blank     = "[      ]";
+	const ut_char_t* assertion_success   = "OK";
+	const ut_char_t* assertion_fail      = "FAIL";
+	const ut_char_t* assertion_exception = "HALT";
+	const ut_char_t* assertion_blank     = " ";
 
 	//-----------------------------------------------------------------------
 	const ut_char_t* name;
@@ -297,7 +266,7 @@ void ut_testrunner_print_report(ut_testsuite_t* suite, ut_testreport_t* report)
 
 
 		//-------------------------------------------------------------------
-		ut_printfln("%s | %3u.%09u | %5u | %5u | %5u | [%s] %s",
+		ut_printfln("[ %-4s ] | %3u.%09u | %5u | %5u | %5u | [%s] %s",
 			assertion,
 
 			runtime.second,
@@ -376,20 +345,17 @@ void ut_testrunner_print_report(ut_testsuite_t* suite, ut_testreport_t* report)
 
 
 	//-----------------------------------------------------------------------
-	if (ut_nullptr!=report)
+	if (ut_nullptr!= suite->report)
 	{
-		report->assertion_success   += total_assertion_success  ;
-		report->assertion_fail      += total_assertion_fail     ;
-		report->assertion_exception += total_assertion_exception;
-
-		report->case_success        += total_case_success       ;
-		report->case_fail           += total_case_fail          ;
-		report->case_exception      += total_case_exception     ;
-		report->case_count          += total_case_count         ;
-
-		report->suite_count++;
-
-		ut_time_add(&report->runtime, &total_runtime, &report->runtime);
+		suite->report->summary.assertion_success   += total_assertion_success  ;
+		suite->report->summary.assertion_fail      += total_assertion_fail     ;
+		suite->report->summary.assertion_exception += total_assertion_exception;
+		suite->report->summary.case_success        += total_case_success       ;
+		suite->report->summary.case_fail           += total_case_fail          ;
+		suite->report->summary.case_exception      += total_case_exception     ;
+		suite->report->summary.case_count          += total_case_count         ;
+		suite->report->summary.suite_count++;
+		ut_time_add(&suite->report->summary.runtime, &total_runtime, &suite->report->summary.runtime);
 	}
 }
 
@@ -525,7 +491,7 @@ void ut_testrunner_suite_case_element (ut_testsuite_t* suite, ut_testsuite_case_
 #if 1
 	if (ut_false == rv)
 	{
-		ut_testrunner_case_exception(&context);
+		ut_testrunner_exception(&context);
 	}
 #endif
 
@@ -558,6 +524,10 @@ void ut_testrunner_suite_case_collection(ut_testsuite_t* suite, void* param)
 /*=========================================================================*/
 void ut_testrunner (ut_testsuite_t* suite, void* param, ut_testreport_t* report)
 {
+	//-----------------------------------------------------------------------
+	suite->report = report;
+
+
 	//-----------------------------------------------------------------------
 	ut_testcontext_t context;
 
@@ -592,7 +562,11 @@ void ut_testrunner (ut_testsuite_t* suite, void* param, ut_testreport_t* report)
 
 
 	//-----------------------------------------------------------------------
-	ut_testrunner_print_report(suite, report);
+	ut_testrunner_print_suite_result(suite);
+
+
+	//-----------------------------------------------------------------------
+	suite->report = ut_nullptr;
 }
 
 
@@ -602,24 +576,21 @@ void ut_testrunner (ut_testsuite_t* suite, void* param, ut_testreport_t* report)
 /***************************************************************************/
 /* 테스트리포트 */
 /***************************************************************************/
-void ut_testreport_reset(ut_testreport_t* r)
+void ut_testreport_reset_summary(ut_testreport_t* r)
 {
-	r->assertion_success   = 0u;
-	r->assertion_fail      = 0u;
-	r->assertion_exception = 0u;
-
-	r->case_success        = 0u;
-	r->case_fail           = 0u;
-	r->case_exception      = 0u;
-	r->case_count          = 0u;
-
-	r->suite_count = 0u;
-
-	r->runtime.second = 0u;
-	r->runtime.nanosecond = 0u;
+	r->summary.assertion_success   = 0u;
+	r->summary.assertion_fail      = 0u;
+	r->summary.assertion_exception = 0u;
+	r->summary.case_success        = 0u;
+	r->summary.case_fail           = 0u;
+	r->summary.case_exception      = 0u;
+	r->summary.case_count          = 0u;
+	r->summary.suite_count = 0u;
+	r->summary.runtime.second = 0u;
+	r->summary.runtime.nanosecond = 0u;
 }
 
-void ut_testreport_print (ut_testreport_t* r)
+void ut_testreport_print_summary(ut_testreport_t* r)
 {
 	//-----------------------------------------------------------------------
 	ut_uint_t  total_number;
@@ -628,8 +599,8 @@ void ut_testreport_print (ut_testreport_t* r)
 
 
 	//-----------------------------------------------------------------------
-	total_number = r->assertion_success;
-	total_count = r->assertion_success + r->assertion_fail + r->assertion_exception;
+	total_number = r->summary.assertion_success;
+	total_count = r->summary.assertion_success + r->summary.assertion_fail + r->summary.assertion_exception;
 	if (total_count > 0u)
 	{
 		total_percent = total_number * 100.0f / total_count;
@@ -651,8 +622,8 @@ void ut_testreport_print (ut_testreport_t* r)
 
 
 	//-----------------------------------------------------------------------
-	ut_printfln("TOTAL TESTSUITE COUNT    : %u", r->suite_count);
-	ut_printfln("TOTAL TESTSUITE RUNTIME  : %u.%09u", r->runtime.second, r->runtime.nanosecond);
+	ut_printfln("TOTAL TESTSUITE COUNT    : %u", r->summary.suite_count);
+	ut_printfln("TOTAL TESTSUITE RUNTIME  : %u.%09u", r->summary.runtime.second, r->summary.runtime.nanosecond);
 	ut_printfln("TOTAL TESTSUITE SUCCESS  : %.2f %% (%u/%u)",
 		total_percent,
 		total_number,
@@ -663,18 +634,18 @@ void ut_testreport_print (ut_testreport_t* r)
 
 
 	//-----------------------------------------------------------------------
-	ut_printfln("TOTAL TESTCASE COUNT     : %u", r->case_count);
-	ut_printfln("TOTAL TESTCASE SUCCESS   : %u", r->case_success);
-	ut_printfln("TOTAL TESTCASE FAIL      : %u", r->case_fail);
-	ut_printfln("TOTAL TESTCASE HALT      : %u", r->case_exception);
+	ut_printfln("TOTAL TESTCASE COUNT     : %u", r->summary.case_count);
+	ut_printfln("TOTAL TESTCASE SUCCESS   : %u", r->summary.case_success);
+	ut_printfln("TOTAL TESTCASE FAIL      : %u", r->summary.case_fail);
+	ut_printfln("TOTAL TESTCASE HALT      : %u", r->summary.case_exception);
 
 	ut_print_endline();
 
 
 	//-----------------------------------------------------------------------
-	ut_printfln("TOTAL TESTASSERT SUCCESS : %u", r->assertion_success);
-	ut_printfln("TOTAL TESTASSERT FAIL    : %u", r->assertion_fail);
-	ut_printfln("TOTAL TESTASSERT HALT    : %u", r->assertion_exception);
+	ut_printfln("TOTAL TESTASSERT SUCCESS : %u", r->summary.assertion_success);
+	ut_printfln("TOTAL TESTASSERT FAIL    : %u", r->summary.assertion_fail);
+	ut_printfln("TOTAL TESTASSERT HALT    : %u", r->summary.assertion_exception);
 
 	ut_print_endline();
 
@@ -694,6 +665,39 @@ void ut_testreport_print (ut_testreport_t* r)
 /***************************************************************************/
 void ut_test_print(const ut_char_t* name)
 {
+#if 0
+	//-----------------------------------------------------------------------
+	//	ut_println("#############################################################################");
+	//	ut_println("*****************************************************************************");
+	//	ut_println("=============================================================================");
+	//	ut_println("-----------------------------------------------------------------------------");
+
+
+	ut_print_endline();
+	ut_print_endline();
+	ut_print_endline();
+
+
+	ut_println("#############################################################################");
+
+	ut_print_endline();
+
+	ut_print("UT ");
+	ut_printf("%s ", UT_VERSION_STRING);
+	ut_print_endline();
+
+	ut_print_endline();
+
+	ut_println("#############################################################################");
+
+
+	ut_print_endline();
+	ut_print_endline();
+	ut_print_endline();
+#endif
+
+
+
 	//-----------------------------------------------------------------------
 	ut_print_endline();
 	ut_println("#############################################################################");

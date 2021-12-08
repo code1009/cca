@@ -138,7 +138,8 @@ UT_API ut_testsuite_t _ut_testsuite__##a_id = \
 	#a_id, \
 	a_description, \
 	{ut_nullptr, ut_nullptr}, \
-	ut_testsuite_case_instance(a_id) \
+	ut_testsuite_case_instance(a_id), \
+	ut_nullptr \
 };
 
 /*-------------------------------------------------------------------------*/
@@ -148,7 +149,8 @@ UT_API ut_testsuite_t _ut_testsuite__##a_id = \
 	#a_id, \
 	a_description, \
 	{a_fixture_setup, a_fixture_teardown}, \
-	ut_testsuite_case_instance(a_id) \
+	ut_testsuite_case_instance(a_id), \
+	ut_nullptr \
 };
 
 /*=========================================================================*/
