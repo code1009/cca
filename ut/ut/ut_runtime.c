@@ -134,11 +134,6 @@ ut_int_t ut_rt_vsnprintf(ut_char_t* buffer, ut_size_t count, const ut_char_t* fo
 	return vsnprintf(buffer, count, format, va);
 }
 
-void ut_rt_putch(ut_char_t ch)
-{
-	putc(ch, stdout);
-}
-
 void ut_rt_zeromemory(void* pointer, ut_size_t size)
 {
 	memset(pointer, 0, size);
@@ -187,17 +182,73 @@ void ut_rt_get_clocktime(ut_timespec_t* t)
 
 #endif
 
+/*=========================================================================*/
+#define UT_RT_CONSOLE_BUFFER_SIZE 81920
+
+static ut_char_t _ut_rt_console_buffer[UT_RT_CONSOLE_BUFFER_SIZE];
+static ut_size_t _ut_rt_console_ptr = 0u;
+
+static void ut_rt_console_output(ut_char_t* pointer, ut_size_t size)
+{
+	/*
+	ut_size_t i;
+
+
+	for (i = 0u; i < size; i++)
+	{
+		putc(*(pointer+i), stdout);
+	}
+	*/
+
+	fwrite(pointer, size, 1, stdout);
+}
+
+static void ut_rt_console_initialize(void)
+{
+	_ut_rt_console_ptr = 0u;
+}
+
+static void ut_rt_console_flush(void)
+{
+	if (_ut_rt_console_ptr > 0u)
+	{
+		ut_rt_console_output(_ut_rt_console_buffer, _ut_rt_console_ptr);
+		_ut_rt_console_ptr = 0u;
+	}
+}
+
+static void ut_rt_console_putch(ut_char_t ch)
+{
+	_ut_rt_console_buffer[_ut_rt_console_ptr] = ch;
+	_ut_rt_console_ptr++;
+
+	if (_ut_rt_console_ptr == UT_RT_CONSOLE_BUFFER_SIZE)
+	{
+		ut_rt_console_flush();
+	}
+}
+
+void ut_rt_putch(ut_char_t ch)
+{
+//	putc(ch, stdout);
+	ut_rt_console_putch(ch);
+}
+
 
 
 /***************************************************************************/
 void ut_rt_initialize(void)
 {
 	ut_rt_exception_handler_initalize();
+
+	ut_rt_console_initialize();
 }
 
 void ut_rt_uninitialize(void)
 {
 	ut_rt_exception_handler_uninitalize();
+
+	ut_rt_console_flush();
 }
 
 
