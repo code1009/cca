@@ -97,7 +97,7 @@ typedef unsigned char ut_byte_t;
 
 
 //===========================================================================
-typedef ut_uint32_t ut_size_t;
+typedef size_t ut_size_t;
 typedef ut_int32_t  ut_time_t;
 
 

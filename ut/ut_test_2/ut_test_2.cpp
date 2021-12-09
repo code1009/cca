@@ -1,4 +1,9 @@
-﻿/***************************************************************************/
+﻿// This is an open source non-commercial project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
+
+
+/***************************************************************************/
 #include "../ut/ut.h"
 #include "../ut_test_1/ut_test_1.h"
 

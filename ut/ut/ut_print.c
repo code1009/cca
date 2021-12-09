@@ -1,4 +1,9 @@
-﻿/* ==========================================================================
+﻿// This is an open source non-commercial project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
+
+
+/* ==========================================================================
 **
 ** ut_print.c
 **
@@ -81,7 +86,7 @@ void ut_printf(const ut_char_t* format, ...)
 
 	if (length > 0)
 	{
-		ut_print_string(_ut_print_format_buffer, length);
+		ut_print_string(_ut_print_format_buffer, (ut_size_t)length);
 	}
 }
 
@@ -99,7 +104,7 @@ void ut_printfln(const ut_char_t* format, ...)
 
 	if (length > 0)
 	{
-		ut_print_string(_ut_print_format_buffer, length);
+		ut_print_string(_ut_print_format_buffer, (ut_size_t)length);
 		ut_print_endline();
 	}
 }

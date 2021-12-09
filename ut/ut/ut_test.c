@@ -1,4 +1,9 @@
-﻿/* ==========================================================================
+﻿// This is an open source non-commercial project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
+
+
+/* ==========================================================================
 **
 ** ut_testrunner.c
 **
@@ -515,7 +520,7 @@ void ut_testreport_writer_default_assert_condition(void* context,
 		ut_println("# TEST ASSERTION FAILED");
 		ut_printfln("  TESTSUITE : %s", ctx->suite->name);
 
-		if (ctx->suite_case)
+		if (ut_nullptr != ctx->suite_case)
 		{
 			ut_printfln("  TESTCASE  : %s", ctx->suite_case->test->name);
 		}
@@ -1076,18 +1081,18 @@ void ut_testrunner_assert_condition(
 
 
 	//-----------------------------------------------------------------------
-	if (condition)
+	if (!condition)
 	{
-		if (ctx->suite_case)
+		if (ut_nullptr != ctx->suite_case)
 		{
-			ctx->suite_case->result.success++;
+			ctx->suite_case->result.fail++;
 		}
 	}
 	else
 	{
-		if (ctx->suite_case)
+		if (ut_nullptr != ctx->suite_case)
 		{
-			ctx->suite_case->result.fail++;
+			ctx->suite_case->result.success++;
 		}
 	}
 

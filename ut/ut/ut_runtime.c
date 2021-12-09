@@ -1,4 +1,9 @@
-﻿/* ==========================================================================
+﻿// This is an open source non-commercial project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
+
+
+/* ==========================================================================
 **
 ** ut_runtime.c
 **
@@ -32,7 +37,7 @@
 
 /***************************************************************************/
 /*=========================================================================*/
-typedef void (*ut_signal_handler_t)(int);
+typedef void (*ut_signal_handler_t)(int signal);
 
 /*=========================================================================*/
 static ut_signal_handler_t _ut_rt_previous_signal_handler_SIGSEGV = ut_nullptr;
