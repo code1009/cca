@@ -97,7 +97,7 @@ void ut_testreport_writer_xml_exception(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("      ]]>");
+	ut_println("     ]]>");
 	ut_print_endline();
 
 
@@ -113,7 +113,7 @@ void ut_testreport_writer_xml_exception(void* context)
 
 	//-----------------------------------------------------------------------
 	ut_print_endline();
-	ut_println("     <![CDATA[");
+	ut_println("    <![CDATA[");
 }
 
 void ut_testreport_writer_xml_assert_condition(void* context,
@@ -133,12 +133,12 @@ void ut_testreport_writer_xml_assert_condition(void* context,
 	if (!condition)
 	{
 		//-----------------------------------------------------------------------
-		ut_println("      ]]>");
+		ut_println("     ]]>");
 		ut_print_endline();
 
 
 		//-----------------------------------------------------------------------
-		ut_println ("      <assertion status=\"failed\" ");
+		ut_println ("      <assertion status=\"fail\" ");
 		ut_printfln("       suite=\"%s\" ", ctx->suite->name);
 		if (ut_nullptr != ctx->suite_case->test->name)
 		{
@@ -147,12 +147,12 @@ void ut_testreport_writer_xml_assert_condition(void* context,
 		ut_printfln("       file=\"%s\" ", file);
 		ut_printfln("       line=\"%u\" ", line);
 		ut_printfln("       function=\"%s\" ", function);
-		ut_println("       />");
+		ut_println ("       />");
 
 
 		//-----------------------------------------------------------------------
 		ut_print_endline();
-		ut_println("     <![CDATA[");
+		ut_println("    <![CDATA[");
 	}
 }
 
@@ -199,7 +199,7 @@ void ut_testreport_writer_xml_suite_case_begin(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println ("    ]]>");
+	ut_println ("     ]]>");
 	ut_print_endline();
 
 
@@ -210,12 +210,12 @@ void ut_testreport_writer_xml_suite_case_begin(void* context)
 	{
 		ut_printfln("     description=\"%s\" ", ctx->suite_case->test->description);
 	}
-	ut_println("      >");
+	ut_println("     >");
 
 
 	//-----------------------------------------------------------------------
 	ut_print_endline();
-	ut_println("     <![CDATA[");
+	ut_println("    <![CDATA[");
 }
 
 void ut_testreport_writer_xml_suite_case_end(void* context)
@@ -227,7 +227,7 @@ void ut_testreport_writer_xml_suite_case_end(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("    ]]>");
+	ut_println("     ]]>");
 	ut_print_endline();
 
 
@@ -249,7 +249,7 @@ void ut_testreport_writer_xml_suite_result_begin(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("    ]]>");
+	ut_println("     ]]>");
 	ut_print_endline();
 
 
@@ -361,15 +361,15 @@ void ut_testreport_writer_xml_suite_result_case(void* context,
 
 
 	//-----------------------------------------------------------------------
-	ut_println ("      <case ");
-	ut_printfln("       name=\"%s\" "       , name);
-	ut_printfln("       description=\"%s\" ", description);
-	ut_printfln("       assertion=\"%s\" "  , assertion_string);
-	ut_printfln("       runtime=\"%u.%09\" ", runtime->second, runtime->nanosecond);
-	ut_printfln("       success=\"%u\" "    , ctx->suite_case->result.success);
-	ut_printfln("       fail=\"%u\" "       , ctx->suite_case->result.fail);
-	ut_printfln("       exception=\"%u\" "  , ctx->suite_case->result.exception);
-	ut_println ("       />");
+	ut_println ("    <case ");
+	ut_printfln("     name=\"%s\" "        , name);
+	ut_printfln("     description=\"%s\" " , description);
+	ut_printfln("     assertion=\"%s\" "   , assertion_string);
+	ut_printfln("     runtime=\"%u.%09u\" ", runtime->second, runtime->nanosecond);
+	ut_printfln("     success=\"%u\" "     , ctx->suite_case->result.success);
+	ut_printfln("     fail=\"%u\" "        , ctx->suite_case->result.fail);
+	ut_printfln("     exception=\"%u\" "   , ctx->suite_case->result.exception);
+	ut_println ("     />");
 }
 
 /*=========================================================================*/
