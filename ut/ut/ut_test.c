@@ -75,15 +75,15 @@ void ut_testreport_writer_xml_end(void* param, ut_testreport_summary_t* summary)
 	//-----------------------------------------------------------------------
 	ut_println ("  <summary ");
 	ut_printfln("   count=\"%u\" ", summary->count);
-	ut_printfln("   testsuite_runtime=\"%u.%09u\" ", summary->runtime.second, summary->runtime.nanosecond);
-	ut_printfln("   testsuite_success=\"%.2f\" "   , total_percent);
-	ut_printfln("   testcase_count=\"%u\" "        , summary->case_count);
-	ut_printfln("   testcase_success=\"%u\" "      , summary->case_success);
-	ut_printfln("   testcase_fail=\"%u\" "         , summary->case_fail);
-	ut_printfln("   testcase_halt=\"%u\" "         , summary->case_exception);
-	ut_printfln("   testassert_success=\"%u\" "    , summary->assertion_success);
-	ut_printfln("   testassert_fail=\"%u\" "       , summary->assertion_fail);
-	ut_printfln("   testassert_halt=\"%u\" "       , summary->assertion_exception);
+	ut_printfln("   suite_runtime=\"%u.%09u\" "  , summary->runtime.second, summary->runtime.nanosecond);
+	ut_printfln("   suite_success=\"%.2f\" "     , total_percent);
+	ut_printfln("   case_count=\"%u\" "          , summary->case_count);
+	ut_printfln("   case_success=\"%u\" "        , summary->case_success);
+	ut_printfln("   case_fail=\"%u\" "           , summary->case_fail);
+	ut_printfln("   case_exception=\"%u\" "      , summary->case_exception);
+	ut_printfln("   assert_success=\"%u\" "      , summary->assertion_success);
+	ut_printfln("   assert_fail=\"%u\" "         , summary->assertion_fail);
+	ut_printfln("   assertion_exception=\"%u\" " , summary->assertion_exception);
 	ut_println ("   />");
 
 
@@ -305,15 +305,15 @@ void ut_testreport_writer_xml_suite_result_end(void* context, ut_testreport_summ
 
 	//-----------------------------------------------------------------------
 	ut_println ("    <summary ");
-	ut_printfln("     testsuite_runtime=\"%u.%09u\" ", summary->runtime.second, summary->runtime.nanosecond);
-	ut_printfln("     testsuite_success=\"%.2f\" "   , total_percent);
-	ut_printfln("     testcase_count=\"%u\" "        , summary->case_count);
-	ut_printfln("     testcase_success=\"%u\" "      , summary->case_success);
-	ut_printfln("     testcase_fail=\"%u\" "         , summary->case_fail);
-	ut_printfln("     testcase_halt=\"%u\" "         , summary->case_exception);
-	ut_printfln("     testassert_success=\"%u\" "    , summary->assertion_success);
-	ut_printfln("     testassert_fail=\"%u\" "       , summary->assertion_fail);
-	ut_printfln("     testassert_halt=\"%u\" "       , summary->assertion_exception);
+	ut_printfln("     suite_runtime=\"%u.%09u\" "  , summary->runtime.second, summary->runtime.nanosecond);
+	ut_printfln("     suite_success=\"%.2f\" "     , total_percent);
+	ut_printfln("     case_count=\"%u\" "          , summary->case_count);
+	ut_printfln("     case_success=\"%u\" "        , summary->case_success);
+	ut_printfln("     case_fail=\"%u\" "           , summary->case_fail);
+	ut_printfln("     case_exception=\"%u\" "      , summary->case_exception);
+	ut_printfln("     assert_success=\"%u\" "      , summary->assertion_success);
+	ut_printfln("     assert_fail=\"%u\" "         , summary->assertion_fail);
+	ut_printfln("     assertion_exception=\"%u\" " , summary->assertion_exception);
 	ut_println ("     />");
 
 
