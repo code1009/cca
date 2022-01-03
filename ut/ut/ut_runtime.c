@@ -187,12 +187,17 @@ void ut_rt_get_clocktime(ut_timespec_t* t)
 
 #endif
 
+
+
+/***************************************************************************/
 /*=========================================================================*/
 #define UT_RT_CONSOLE_RAW_BUFFER_SIZE 81920
 
+/*=========================================================================*/
 static ut_char_t _ut_rt_console_raw_buffer[UT_RT_CONSOLE_RAW_BUFFER_SIZE];
 static ut_size_t _ut_rt_console_raw_ptr = 0u;
 
+/*=========================================================================*/
 static void ut_rt_console_raw_output(ut_char_t* pointer, ut_size_t size)
 {
 	/*
@@ -233,6 +238,7 @@ static void ut_rt_console_raw_outputb(ut_char_t ch)
 	}
 }
 
+/*=========================================================================*/
 void ut_rt_console_outputb(ut_char_t ch)
 {
 //	putc(ch, stdout);
