@@ -36,7 +36,7 @@ static ut_char_t _ut_print_format_buffer[UT_PRINT_FORMAT_BUFFER_SIZE] = { 0 };
 /*=========================================================================*/
 void ut_print_char(ut_char_t ch)
 {
-	ut_rt_putch(ch);
+	ut_rt_console_outputb(ch);
 }
 
 void ut_print_string(ut_char_t* pointer, ut_size_t size)
@@ -50,13 +50,15 @@ void ut_print_string(ut_char_t* pointer, ut_size_t size)
 	}
 }
 
-void ut_print_endline(void)
+
+/*=========================================================================*/
+void ut_println(void)
 {
 	ut_print_string(UT_PRINT_ENDLINE, UT_PRINT_ENDLINE_LENGTH);
 }
 
 /*=========================================================================*/
-void ut_print(const ut_char_t* message)
+void ut_prints(const ut_char_t* message)
 {
 	while (*message != 0)
 	{
@@ -65,10 +67,10 @@ void ut_print(const ut_char_t* message)
 	}
 }
 
-void ut_println(const ut_char_t* message)
+void ut_printsln(const ut_char_t* message)
 {
-	ut_print(message);
-	ut_print_endline();
+	ut_prints(message);
+	ut_println();
 }
 
 /*=========================================================================*/
@@ -105,7 +107,7 @@ void ut_printfln(const ut_char_t* format, ...)
 	if (length > 0)
 	{
 		ut_print_string(_ut_print_format_buffer, (ut_size_t)length);
-		ut_print_endline();
+		ut_println();
 	}
 }
 

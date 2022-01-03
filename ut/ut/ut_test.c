@@ -28,13 +28,13 @@
 void ut_test_print(const ut_char_t* name)
 {
 	//-----------------------------------------------------------------------
-	ut_print_endline();
-	ut_println("#############################################################################");
-	ut_print_endline();
+	ut_println();
+	ut_printsln("#############################################################################");
+	ut_println();
 	ut_printfln("[%s]", name);
-	ut_print_endline();
-	ut_println("#############################################################################");
-	ut_print_endline();
+	ut_println();
+	ut_printsln("#############################################################################");
+	ut_println();
 }
 
 
@@ -45,10 +45,10 @@ void ut_test_print(const ut_char_t* name)
 /***************************************************************************/
 void ut_testreport_writer_xml_begin(void* param)
 {
-	ut_println("<?xml version=\"1.0\" standalone=\"yes\"?>");
-	ut_print_endline();
-	ut_println("<report>");
-	ut_print_endline();
+	ut_printsln("<?xml version=\"1.0\" standalone=\"yes\"?>");
+	ut_println();
+	ut_printsln("<report>");
+	ut_println();
 }
 
 void ut_testreport_writer_xml_end(void* param, ut_testreport_summary_t* summary)
@@ -73,7 +73,7 @@ void ut_testreport_writer_xml_end(void* param, ut_testreport_summary_t* summary)
 
 
 	//-----------------------------------------------------------------------
-	ut_println ("  <summary ");
+	ut_printsln ("  <summary ");
 	ut_printfln("   count=\"%u\" ", summary->count);
 	ut_printfln("   suite_runtime=\"%u.%09u\" "  , summary->runtime.second, summary->runtime.nanosecond);
 	ut_printfln("   suite_success=\"%.2f\" "     , total_percent);
@@ -84,13 +84,13 @@ void ut_testreport_writer_xml_end(void* param, ut_testreport_summary_t* summary)
 	ut_printfln("   assert_success=\"%u\" "      , summary->assertion_success);
 	ut_printfln("   assert_fail=\"%u\" "         , summary->assertion_fail);
 	ut_printfln("   assertion_exception=\"%u\" " , summary->assertion_exception);
-	ut_println ("   />");
+	ut_printsln ("   />");
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
-	ut_println("</report>");
-	ut_print_endline();
+	ut_println();
+	ut_printsln("</report>");
+	ut_println();
 }
 
 void ut_testreport_writer_xml_exception(void* context)
@@ -102,23 +102,23 @@ void ut_testreport_writer_xml_exception(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("     ]]>");
-	ut_print_endline();
+	ut_printsln("     ]]>");
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
-	ut_println ("      <exception ");
+	ut_printsln ("      <exception ");
 	ut_printfln("       suite=\"%s\" ", ctx->suite->name);
 	if (ut_nullptr != ctx->suite_case->test->name)
 	{
 		ut_printfln("       case=\"%s\" ", ctx->suite_case->test->name);
 	}
-	ut_println("       />");
+	ut_printsln("       />");
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
-	ut_println("    <![CDATA[");
+	ut_println();
+	ut_printsln("    <![CDATA[");
 }
 
 void ut_testreport_writer_xml_assert_condition(void* context,
@@ -138,12 +138,12 @@ void ut_testreport_writer_xml_assert_condition(void* context,
 	if (!condition)
 	{
 		//-----------------------------------------------------------------------
-		ut_println("     ]]>");
-		ut_print_endline();
+		ut_printsln("     ]]>");
+		ut_println();
 
 
 		//-----------------------------------------------------------------------
-		ut_println ("      <assertion status=\"fail\" ");
+		ut_printsln ("      <assertion status=\"fail\" ");
 		ut_printfln("       suite=\"%s\" ", ctx->suite->name);
 		if (ut_nullptr != ctx->suite_case->test->name)
 		{
@@ -152,12 +152,12 @@ void ut_testreport_writer_xml_assert_condition(void* context,
 		ut_printfln("       file=\"%s\" ", file);
 		ut_printfln("       line=\"%u\" ", line);
 		ut_printfln("       function=\"%s\" ", function);
-		ut_println ("       />");
+		ut_printsln ("       />");
 
 
 		//-----------------------------------------------------------------------
-		ut_print_endline();
-		ut_println("    <![CDATA[");
+		ut_println();
+		ut_printsln("    <![CDATA[");
 	}
 }
 
@@ -170,18 +170,18 @@ void ut_testreport_writer_xml_suite_begin(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println ("  <suite ");
+	ut_printsln ("  <suite ");
 	ut_printfln("   name=\"%s\" ", ctx->suite->name);
 	if (ut_nullptr != ctx->suite->description)
 	{
 		ut_printfln("   description=\"%s\" ", ctx->suite->description);
 	}
-	ut_println("   >");
-	ut_print_endline();
+	ut_printsln("   >");
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
-	ut_println("    <![CDATA[");
+	ut_printsln("    <![CDATA[");
 }
 
 void ut_testreport_writer_xml_suite_end(void* context)
@@ -204,23 +204,23 @@ void ut_testreport_writer_xml_suite_case_begin(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println ("     ]]>");
-	ut_print_endline();
+	ut_printsln ("     ]]>");
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
-	ut_println ("    <case ");
+	ut_printsln ("    <case ");
 	ut_printfln("     name=\"%s\" ", ctx->suite_case->test->name);
 	if (ut_nullptr != ctx->suite_case->test->description)
 	{
 		ut_printfln("     description=\"%s\" ", ctx->suite_case->test->description);
 	}
-	ut_println("     >");
+	ut_printsln("     >");
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
-	ut_println("    <![CDATA[");
+	ut_println();
+	ut_printsln("    <![CDATA[");
 }
 
 void ut_testreport_writer_xml_suite_case_end(void* context)
@@ -232,17 +232,17 @@ void ut_testreport_writer_xml_suite_case_end(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("     ]]>");
-	ut_print_endline();
+	ut_printsln("     ]]>");
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
-	ut_println("    </case>");
-	ut_print_endline();
+	ut_printsln("    </case>");
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
-	ut_println("    <![CDATA[");
+	ut_printsln("    <![CDATA[");
 }
 
 void ut_testreport_writer_xml_suite_result_begin(void* context)
@@ -254,23 +254,23 @@ void ut_testreport_writer_xml_suite_result_begin(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("     ]]>");
-	ut_print_endline();
+	ut_printsln("     ]]>");
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
-	ut_println("  </suite>");
-	ut_print_endline();
+	ut_printsln("  </suite>");
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
-	ut_println ("  <suiteresult ");
+	ut_printsln ("  <suiteresult ");
 	ut_printfln("   name=\"%s\" ", ctx->suite->name);
 	if (ut_nullptr != ctx->suite->description)
 	{
 		ut_printfln("   description=\"%s\" ", ctx->suite->description);
 	}
-	ut_println ("   >");
+	ut_printsln ("   >");
 }
 
 void ut_testreport_writer_xml_suite_result_end(void* context, ut_testreport_summary_t* summary)
@@ -304,7 +304,7 @@ void ut_testreport_writer_xml_suite_result_end(void* context, ut_testreport_summ
 
 
 	//-----------------------------------------------------------------------
-	ut_println ("    <summary ");
+	ut_printsln ("    <summary ");
 	ut_printfln("     suite_runtime=\"%u.%09u\" "  , summary->runtime.second, summary->runtime.nanosecond);
 	ut_printfln("     suite_success=\"%.2f\" "     , total_percent);
 	ut_printfln("     case_count=\"%u\" "          , summary->case_count);
@@ -314,17 +314,17 @@ void ut_testreport_writer_xml_suite_result_end(void* context, ut_testreport_summ
 	ut_printfln("     assert_success=\"%u\" "      , summary->assertion_success);
 	ut_printfln("     assert_fail=\"%u\" "         , summary->assertion_fail);
 	ut_printfln("     assertion_exception=\"%u\" " , summary->assertion_exception);
-	ut_println ("     />");
+	ut_printsln ("     />");
 
 
 	//-----------------------------------------------------------------------
-	ut_println("  </suiteresult>");
+	ut_printsln("  </suiteresult>");
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
-	ut_print_endline();
-	ut_print_endline();
+	ut_println();
+	ut_println();
+	ut_println();
 }
 
 void ut_testreport_writer_xml_suite_result_case(void* context,
@@ -366,7 +366,7 @@ void ut_testreport_writer_xml_suite_result_case(void* context,
 
 
 	//-----------------------------------------------------------------------
-	ut_println ("    <case ");
+	ut_printsln ("    <case ");
 	ut_printfln("     name=\"%s\" "        , name);
 	ut_printfln("     description=\"%s\" " , description);
 	ut_printfln("     assertion=\"%s\" "   , assertion_string);
@@ -374,7 +374,7 @@ void ut_testreport_writer_xml_suite_result_case(void* context,
 	ut_printfln("     success=\"%u\" "     , ctx->suite_case->result.success);
 	ut_printfln("     fail=\"%u\" "        , ctx->suite_case->result.fail);
 	ut_printfln("     exception=\"%u\" "   , ctx->suite_case->result.exception);
-	ut_println ("     />");
+	ut_printsln ("     />");
 }
 
 /*=========================================================================*/
@@ -398,23 +398,23 @@ UT_GVAR_IMPL ut_testreport_writer_t _ut_testreport_writer_xml =
 /***************************************************************************/
 void ut_testreport_writer_default_begin(void* param)
 {
-	ut_print_endline();
+	ut_println();
 
 
-	ut_println("#############################################################################");
+	ut_printsln("#############################################################################");
 
-	ut_print_endline();
+	ut_println();
 
-	ut_print("UT ");
+	ut_prints("UT ");
 	ut_printf("%s ", UT_VERSION_STRING);
-	ut_print_endline();
+	ut_println();
 
-	ut_print_endline();
+	ut_println();
 
-	ut_println("#############################################################################");
+	ut_printsln("#############################################################################");
 
 
-	ut_print_endline();
+	ut_println();
 }
 
 void ut_testreport_writer_default_end(void* param, ut_testreport_summary_t* summary)
@@ -439,13 +439,13 @@ void ut_testreport_writer_default_end(void* param, ut_testreport_summary_t* summ
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
-	ut_println("#############################################################################");
-	ut_print_endline();
-	ut_println("TESTREPORT SUMMARY");
-	ut_print_endline();
-	ut_println("#############################################################################");
-	ut_print_endline();
+	ut_println();
+	ut_printsln("#############################################################################");
+	ut_println();
+	ut_printsln("TESTREPORT SUMMARY");
+	ut_println();
+	ut_printsln("#############################################################################");
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
@@ -457,7 +457,7 @@ void ut_testreport_writer_default_end(void* param, ut_testreport_summary_t* summ
 		total_count
 	);
 
-	ut_print_endline();
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
@@ -466,7 +466,7 @@ void ut_testreport_writer_default_end(void* param, ut_testreport_summary_t* summ
 	ut_printfln("TOTAL TESTCASE FAIL      : %u", summary->case_fail);
 	ut_printfln("TOTAL TESTCASE HALT      : %u", summary->case_exception);
 
-	ut_print_endline();
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
@@ -474,13 +474,13 @@ void ut_testreport_writer_default_end(void* param, ut_testreport_summary_t* summ
 	ut_printfln("TOTAL TESTASSERT FAIL    : %u", summary->assertion_fail);
 	ut_printfln("TOTAL TESTASSERT HALT    : %u", summary->assertion_exception);
 
-	ut_print_endline();
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
-	ut_print_endline();
-	ut_print_endline();
+	ut_println();
+	ut_println();
+	ut_println();
 }
 
 void ut_testreport_writer_default_exception(void* context)
@@ -492,7 +492,7 @@ void ut_testreport_writer_default_exception(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("# TEST EXCEPTION");
+	ut_printsln("# TEST EXCEPTION");
 	ut_printfln("  TESTSUITE : %s", ctx->suite->name);
 
 	if (ut_nullptr != ctx->suite_case)
@@ -517,7 +517,7 @@ void ut_testreport_writer_default_assert_condition(void* context,
 	//-----------------------------------------------------------------------
 	if (!condition)
 	{
-		ut_println("# TEST ASSERTION FAILED");
+		ut_printsln("# TEST ASSERTION FAILED");
 		ut_printfln("  TESTSUITE : %s", ctx->suite->name);
 
 		if (ut_nullptr != ctx->suite_case)
@@ -541,15 +541,15 @@ void ut_testreport_writer_default_suite_begin(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("*****************************************************************************");
+	ut_printsln("*****************************************************************************");
 	ut_printfln("# [%s] TESTSUITE BEGIN",
 		ctx->suite->name
 	);
 
 	if (ut_nullptr != ctx->suite->description)
 	{
-		ut_print("  :");
-		ut_println(ctx->suite->description);
+		ut_prints("  :");
+		ut_printsln(ctx->suite->description);
 	}
 
 
@@ -562,7 +562,7 @@ void ut_testreport_writer_default_suite_begin(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("*****************************************************************************");
+	ut_printsln("*****************************************************************************");
 }
 
 void ut_testreport_writer_default_suite_end(void* context)
@@ -574,7 +574,7 @@ void ut_testreport_writer_default_suite_end(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("*****************************************************************************");
+	ut_printsln("*****************************************************************************");
 
 
 	//-----------------------------------------------------------------------
@@ -592,7 +592,7 @@ void ut_testreport_writer_default_suite_end(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
+	ut_println();
 }
 
 void ut_testreport_writer_default_suite_case_begin(void* context)
@@ -604,7 +604,7 @@ void ut_testreport_writer_default_suite_case_begin(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("-----------------------------------------------------------------------------");
+	ut_printsln("-----------------------------------------------------------------------------");
 
 	ut_printfln("# [%s] TESTCASE BEGIN ",
 		ctx->suite_case->test->name
@@ -612,8 +612,8 @@ void ut_testreport_writer_default_suite_case_begin(void* context)
 
 	if (ut_nullptr != ctx->suite_case->test->description)
 	{
-		ut_print("  :");
-		ut_println(ctx->suite_case->test->description);
+		ut_prints("  :");
+		ut_printsln(ctx->suite_case->test->description);
 	}
 }
 
@@ -630,7 +630,7 @@ void ut_testreport_writer_default_suite_case_end(void* context)
 		ctx->suite_case->test->name
 	);
 
-	ut_print_endline();
+	ut_println();
 }
 
 void ut_testreport_writer_default_suite_result_begin(void* context)
@@ -642,24 +642,24 @@ void ut_testreport_writer_default_suite_result_begin(void* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("*****************************************************************************");
+	ut_printsln("*****************************************************************************");
 	ut_printfln("# [%s] TESTSUITE RESULT",
 		ctx->suite->name
 	);
 
 	if (ut_nullptr != ctx->suite->description)
 	{
-		ut_print("  :");
-		ut_println(ctx->suite->description);
+		ut_prints("  :");
+		ut_printsln(ctx->suite->description);
 	}
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
+	ut_println();
 
-	ut_println("---------+---------------+-------+-------+-------+---------------------------");
-	ut_println(" RESULT  | RUNTIME       | OK    | FAIL  | HALT  | TESTCASE");
-	ut_println("---------+---------------+-------+-------+-------+---------------------------");
+	ut_printsln("---------+---------------+-------+-------+-------+---------------------------");
+	ut_printsln(" RESULT  | RUNTIME       | OK    | FAIL  | HALT  | TESTCASE");
+	ut_printsln("---------+---------------+-------+-------+-------+---------------------------");
 }
 
 void ut_testreport_writer_default_suite_result_end(void* context, ut_testreport_summary_t* summary)
@@ -671,8 +671,8 @@ void ut_testreport_writer_default_suite_result_end(void* context, ut_testreport_
 
 
 	//-----------------------------------------------------------------------
-	ut_println("---------+---------------+-------+-------+-------+---------------------------");
-	ut_print_endline();
+	ut_printsln("---------+---------------+-------+-------+-------+---------------------------");
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
@@ -702,7 +702,7 @@ void ut_testreport_writer_default_suite_result_end(void* context, ut_testreport_
 		total_count
 	);
 
-	ut_print_endline();
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
@@ -711,7 +711,7 @@ void ut_testreport_writer_default_suite_result_end(void* context, ut_testreport_
 	ut_printfln("TESTCASE FAIL      : %u", summary->case_fail);
 	ut_printfln("TESTCASE HALT      : %u", summary->case_exception);
 
-	ut_print_endline();
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
@@ -719,13 +719,13 @@ void ut_testreport_writer_default_suite_result_end(void* context, ut_testreport_
 	ut_printfln("TESTASSERT FAIL    : %u", summary->assertion_fail);
 	ut_printfln("TESTASSERT HALT    : %u", summary->assertion_exception);
 
-	ut_print_endline();
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
-	ut_print_endline();
-	ut_print_endline();
+	ut_println();
+	ut_println();
+	ut_println();
 }
 
 void ut_testreport_writer_default_suite_result_case(void* context,
@@ -843,32 +843,32 @@ void ut_testreport_begin(ut_testreport_t* report, void* param)
 
 	//-----------------------------------------------------------------------
 #if 0
-	ut_println("#############################################################################");
-	ut_println("*****************************************************************************");
-	ut_println("=============================================================================");
-	ut_println("-----------------------------------------------------------------------------");
+	ut_printsln("#############################################################################");
+	ut_printsln("*****************************************************************************");
+	ut_printsln("=============================================================================");
+	ut_printsln("-----------------------------------------------------------------------------");
 #endif
 
 
 #if (UT_CONFIG_ENABLE_TESTREPORT_WRITER==0)
 	//-----------------------------------------------------------------------
-	ut_print_endline();
+	ut_println();
 
 
-	ut_println("#############################################################################");
+	ut_printsln("#############################################################################");
 
-	ut_print_endline();
+	ut_println();
 
-	ut_print("UT ");
+	ut_prints("UT ");
 	ut_printf("%s ", UT_VERSION_STRING);
-	ut_print_endline();
+	ut_println();
 
-	ut_print_endline();
+	ut_println();
 
-	ut_println("#############################################################################");
+	ut_printsln("#############################################################################");
 
 
-	ut_print_endline();
+	ut_println();
 #endif
 }
 
@@ -914,13 +914,13 @@ void ut_testreport_end(ut_testreport_t* report, void* param)
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
-	ut_println("#############################################################################");
-	ut_print_endline();
-	ut_println("TESTREPORT SUMMARY");
-	ut_print_endline();
-	ut_println("#############################################################################");
-	ut_print_endline();
+	ut_println();
+	ut_printsln("#############################################################################");
+	ut_println();
+	ut_printsln("TESTREPORT SUMMARY");
+	ut_println();
+	ut_printsln("#############################################################################");
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
@@ -932,7 +932,7 @@ void ut_testreport_end(ut_testreport_t* report, void* param)
 		total_count
 	);
 
-	ut_print_endline();
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
@@ -941,7 +941,7 @@ void ut_testreport_end(ut_testreport_t* report, void* param)
 	ut_printfln("TOTAL TESTCASE FAIL      : %u", report->summary.case_fail);
 	ut_printfln("TOTAL TESTCASE HALT      : %u", report->summary.case_exception);
 
-	ut_print_endline();
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
@@ -949,13 +949,13 @@ void ut_testreport_end(ut_testreport_t* report, void* param)
 	ut_printfln("TOTAL TESTASSERT FAIL    : %u", report->summary.assertion_fail);
 	ut_printfln("TOTAL TESTASSERT HALT    : %u", report->summary.assertion_exception);
 
-	ut_print_endline();
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
-	ut_print_endline();
-	ut_print_endline();
+	ut_println();
+	ut_println();
+	ut_println();
 #endif
 }
 
@@ -1028,7 +1028,7 @@ void ut_testrunner_exception(void* context)
 
 #if (UT_CONFIG_ENABLE_TESTREPORT_WRITER==0)
 	//-----------------------------------------------------------------------
-	ut_println("# TEST EXCEPTION");
+	ut_printsln("# TEST EXCEPTION");
 	ut_printfln("  TESTSUITE : %s", ctx->suite->name);
 
 	if (ut_nullptr != ctx->suite_case)
@@ -1101,7 +1101,7 @@ void ut_testrunner_assert_condition(
 	//-----------------------------------------------------------------------
 	if (!condition)
 	{
-		ut_println("# TEST ASSERTION FAILED");
+		ut_printsln("# TEST ASSERTION FAILED");
 		ut_printfln("  TESTSUITE : %s", ctx->suite->name);
 
 		if (ctx->suite_case)
@@ -1189,15 +1189,15 @@ void ut_testrunner_print_suite_result(ut_testcontext_t* context)
 
 #if (UT_CONFIG_ENABLE_TESTREPORT_WRITER==0)
 	//-----------------------------------------------------------------------
-	ut_println("*****************************************************************************");
+	ut_printsln("*****************************************************************************");
 	ut_printfln("# [%s] TESTSUITE RESULT",
 		suite->name
 	);
 
 	if (ut_nullptr != suite->description)
 	{
-		ut_print("  :");
-		ut_println(suite->description);
+		ut_prints("  :");
+		ut_printsln(suite->description);
 	}
 #endif
 
@@ -1274,11 +1274,11 @@ void ut_testrunner_print_suite_result(ut_testcontext_t* context)
 
 #if (UT_CONFIG_ENABLE_TESTREPORT_WRITER==0)
 	//-----------------------------------------------------------------------
-	ut_print_endline();
+	ut_println();
 
-	ut_println("---------+---------------+-------+-------+-------+---------------------------");
-	ut_println(" RESULT  | RUNTIME       | OK    | FAIL  | HALT  | TESTCASE");
-	ut_println("---------+---------------+-------+-------+-------+---------------------------");
+	ut_printsln("---------+---------------+-------+-------+-------+---------------------------");
+	ut_printsln(" RESULT  | RUNTIME       | OK    | FAIL  | HALT  | TESTCASE");
+	ut_printsln("---------+---------------+-------+-------+-------+---------------------------");
 #endif
 
 
@@ -1414,8 +1414,8 @@ void ut_testrunner_print_suite_result(ut_testcontext_t* context)
 
 #if (UT_CONFIG_ENABLE_TESTREPORT_WRITER==0)
 	//-----------------------------------------------------------------------
-	ut_println("---------+---------------+-------+-------+-------+---------------------------");
-	ut_print_endline();
+	ut_printsln("---------+---------------+-------+-------+-------+---------------------------");
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
@@ -1445,7 +1445,7 @@ void ut_testrunner_print_suite_result(ut_testcontext_t* context)
 		total_count
 	);
 	
-	ut_print_endline();
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
@@ -1454,7 +1454,7 @@ void ut_testrunner_print_suite_result(ut_testcontext_t* context)
 	ut_printfln("TESTCASE FAIL      : %u", total_case_fail);
 	ut_printfln("TESTCASE HALT      : %u", total_case_exception);
 
-	ut_print_endline();
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
@@ -1462,13 +1462,13 @@ void ut_testrunner_print_suite_result(ut_testcontext_t* context)
 	ut_printfln("TESTASSERT FAIL    : %u", total_assertion_fail);
 	ut_printfln("TESTASSERT HALT    : %u", total_assertion_exception);
 
-	ut_print_endline();
+	ut_println();
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
-	ut_print_endline();
-	ut_print_endline();
+	ut_println();
+	ut_println();
+	ut_println();
 #endif
 
 
@@ -1518,15 +1518,15 @@ void ut_testrunner_print_suite_begin(ut_testcontext_t* context)
 
 #if (UT_CONFIG_ENABLE_TESTREPORT_WRITER==0)
 	//-----------------------------------------------------------------------
-	ut_println("*****************************************************************************");
+	ut_printsln("*****************************************************************************");
 	ut_printfln("# [%s] TESTSUITE BEGIN",
 		context->suite->name
 	);
 
 	if (ut_nullptr != context->suite->description)
 	{
-		ut_print("  :");
-		ut_println(context->suite->description);
+		ut_prints("  :");
+		ut_printsln(context->suite->description);
 	}
 
 
@@ -1539,7 +1539,7 @@ void ut_testrunner_print_suite_begin(ut_testcontext_t* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_println("*****************************************************************************");
+	ut_printsln("*****************************************************************************");
 #endif
 }
 
@@ -1574,7 +1574,7 @@ void ut_testrunner_print_suite_end(ut_testcontext_t* context)
 
 #if (UT_CONFIG_ENABLE_TESTREPORT_WRITER==0)
 	//-----------------------------------------------------------------------
-	ut_println("*****************************************************************************");
+	ut_printsln("*****************************************************************************");
 
 
 	//-----------------------------------------------------------------------
@@ -1592,7 +1592,7 @@ void ut_testrunner_print_suite_end(ut_testcontext_t* context)
 
 
 	//-----------------------------------------------------------------------
-	ut_print_endline();
+	ut_println();
 #endif
 }
 
@@ -1626,7 +1626,7 @@ void ut_testrunner_print_suite_case_begin(ut_testcontext_t* context)
 
 
 #if (UT_CONFIG_ENABLE_TESTREPORT_WRITER==0)
-	ut_println("-----------------------------------------------------------------------------");
+	ut_printsln("-----------------------------------------------------------------------------");
 
 	ut_printfln("# [%s] TESTCASE BEGIN ",
 		context->suite_case->test->name
@@ -1634,8 +1634,8 @@ void ut_testrunner_print_suite_case_begin(ut_testcontext_t* context)
 
 	if (ut_nullptr != context->suite_case->test->description)
 	{
-		ut_print("  :");
-		ut_println(context->suite_case->test->description);
+		ut_prints("  :");
+		ut_printsln(context->suite_case->test->description);
 	}
 #endif
 }
@@ -1675,7 +1675,7 @@ void ut_testrunner_print_suite_case_end(ut_testcontext_t* context)
 		context->suite_case->test->name
 	);
 
-	ut_print_endline();
+	ut_println();
 #endif
 }
 

@@ -16,12 +16,12 @@
 /* 아래 함수 순서를 지켜야 함  */
 ut_testfixture_setup(case1)
 {
-	ut_println("case1-setup");
+	ut_printsln("case1-setup");
 }
 
 ut_testfixture_teardown(case1)
 {
-	ut_println("case1-teardown");
+	ut_printsln("case1-teardown");
 }
 
 ut_testcase_fixture
@@ -32,7 +32,7 @@ ut_testcase_fixture
 	ut_testfixture_teardown_instance(case1)
 )
 {
-	ut_println("case1");
+	ut_printsln("case1");
 
 	ut_testassert(1);
 }
@@ -41,7 +41,7 @@ ut_testcase_fixture
 /* 테스트케이스2 */
 ut_testcase(case2, "case2-description")
 {
-	ut_println("case2");
+	ut_printsln("case2");
 	ut_testassert(0);
 	ut_testassert(1);
 }
@@ -50,14 +50,14 @@ ut_testcase(case2, "case2-description")
 /* 테스트케이스3 */
 ut_testcase(case3, ut_nullptr)
 {
-	ut_println("case3");
+	ut_printsln("case3");
 }
 
 /***************************************************************************/
 /* 테스트케이스4 */
 ut_testcase(case4, ut_nullptr)
 {
-	ut_println("case4");
+	ut_printsln("case4");
 }
 
 
@@ -67,12 +67,12 @@ ut_testcase(case4, ut_nullptr)
 /* 아래 함수 순서를 지켜야 함  */
 ut_testfixture_setup(suite1)
 {
-	ut_println("suite1-setup");
+	ut_printsln("suite1-setup");
 }
 
 ut_testfixture_teardown(suite1)
 {
-	ut_println("suite1-teardown");
+	ut_printsln("suite1-teardown");
 }
 
 ut_testsuite_case_begin(suite1)

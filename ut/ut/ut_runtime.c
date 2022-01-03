@@ -188,12 +188,12 @@ void ut_rt_get_clocktime(ut_timespec_t* t)
 #endif
 
 /*=========================================================================*/
-#define UT_RT_CONSOLE_BUFFER_SIZE 81920
+#define UT_RT_CONSOLE_RAW_BUFFER_SIZE 81920
 
-static ut_char_t _ut_rt_console_buffer[UT_RT_CONSOLE_BUFFER_SIZE];
-static ut_size_t _ut_rt_console_ptr = 0u;
+static ut_char_t _ut_rt_console_raw_buffer[UT_RT_CONSOLE_RAW_BUFFER_SIZE];
+static ut_size_t _ut_rt_console_raw_ptr = 0u;
 
-static void ut_rt_console_output(ut_char_t* pointer, ut_size_t size)
+static void ut_rt_console_raw_output(ut_char_t* pointer, ut_size_t size)
 {
 	/*
 	ut_size_t i;
@@ -208,35 +208,35 @@ static void ut_rt_console_output(ut_char_t* pointer, ut_size_t size)
 	fwrite(pointer, size, 1, stdout);
 }
 
-static void ut_rt_console_initialize(void)
+static void ut_rt_console_raw_initialize(void)
 {
-	_ut_rt_console_ptr = 0u;
+	_ut_rt_console_raw_ptr = 0u;
 }
 
-static void ut_rt_console_flush(void)
+static void ut_rt_console_raw_flush(void)
 {
-	if (_ut_rt_console_ptr > 0u)
+	if (_ut_rt_console_raw_ptr > 0u)
 	{
-		ut_rt_console_output(_ut_rt_console_buffer, _ut_rt_console_ptr);
-		_ut_rt_console_ptr = 0u;
+		ut_rt_console_raw_output(_ut_rt_console_raw_buffer, _ut_rt_console_raw_ptr);
+		_ut_rt_console_raw_ptr = 0u;
 	}
 }
 
-static void ut_rt_console_putch(ut_char_t ch)
+static void ut_rt_console_raw_outputb(ut_char_t ch)
 {
-	_ut_rt_console_buffer[_ut_rt_console_ptr] = ch;
-	_ut_rt_console_ptr++;
+	_ut_rt_console_raw_buffer[_ut_rt_console_raw_ptr] = ch;
+	_ut_rt_console_raw_ptr++;
 
-	if (_ut_rt_console_ptr == UT_RT_CONSOLE_BUFFER_SIZE)
+	if (_ut_rt_console_raw_ptr == UT_RT_CONSOLE_RAW_BUFFER_SIZE)
 	{
-		ut_rt_console_flush();
+		ut_rt_console_raw_flush();
 	}
 }
 
-void ut_rt_putch(ut_char_t ch)
+void ut_rt_console_outputb(ut_char_t ch)
 {
 //	putc(ch, stdout);
-	ut_rt_console_putch(ch);
+	ut_rt_console_raw_outputb(ch);
 }
 
 
@@ -246,14 +246,14 @@ void ut_rt_initialize(void)
 {
 	ut_rt_exception_handler_initalize();
 
-	ut_rt_console_initialize();
+	ut_rt_console_raw_initialize();
 }
 
 void ut_rt_uninitialize(void)
 {
 	ut_rt_exception_handler_uninitalize();
 
-	ut_rt_console_flush();
+	ut_rt_console_raw_flush();
 }
 
 
